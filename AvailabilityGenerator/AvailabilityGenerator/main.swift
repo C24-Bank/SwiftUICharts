@@ -24,7 +24,7 @@ for file in enumerator {
                 
             }
             
-            newContent += line
+            newContent += line + "\n"
         }
         
         if changes > 0 {
