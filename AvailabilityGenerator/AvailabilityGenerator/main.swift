@@ -2,14 +2,14 @@
 
 import Foundation
 
-let rootPath = "../../Sources"
+let rootPath = "../.."
 
 let enumerator = FileManager.default.enumerator(atPath: rootPath)!
 
+print("Checking files for missing availability annotations...")
 for file in enumerator {
     let completePath = rootPath + "/" + (file as! String)
     let fileURL = URL(fileURLWithPath: completePath)
-//    print("Looking at \(fileURL.absoluteString)")
     
     if fileURL.pathExtension.lowercased() == "swift" {
         let contentData = try! Data(contentsOf: fileURL)
@@ -17,8 +17,12 @@ for file in enumerator {
         var newContent = ""
         var changes = 0
         content.enumerateLines { line, stop in
-            if line.starts(with: "class") || line.starts(with: "struct") || line.starts(with: "extension") {
-//                print(line)
+            var lineCopy = line
+            lineCopy = lineCopy.replacingOccurrences(of: "public", with: "")
+            lineCopy = lineCopy.replacingOccurrences(of: "internal", with: "")
+            lineCopy = lineCopy.replacingOccurrences(of: "final", with: "")
+            lineCopy = lineCopy.trimmingCharacters(in: .whitespacesAndNewlines)
+            if lineCopy.starts(with: "class") || lineCopy.starts(with: "struct") || lineCopy.starts(with: "extension") || lineCopy.starts(with: "enum") || lineCopy.starts(with: "protocol") || lineCopy.starts(with: "typealias") {
                 newContent += "@available(iOS 14.0, *)\n"
                 changes += 1
                 
@@ -33,3 +37,4 @@ for file in enumerator {
         }
     }
 }
+print("Done.")
