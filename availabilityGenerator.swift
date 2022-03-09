@@ -7,7 +7,7 @@ import Foundation
 //
 
 let minimumIOSVersion = "14.0"
-let rootPath = "../.."
+let rootPath = "."
 
 //
 // MARK: - Main Script
@@ -39,7 +39,7 @@ for file in enumerator {
             lineCopy = lineCopy.replacingOccurrences(of: "final", with: "")
             lineCopy = lineCopy.trimmingCharacters(in: .whitespacesAndNewlines)
             if lineCopy.starts(with: "class") || lineCopy.starts(with: "struct") || lineCopy.starts(with: "extension") || lineCopy.starts(with: "enum") || lineCopy.starts(with: "protocol") || lineCopy.starts(with: "typealias") {
-                newContent += getIndentationString(of: line)
+                newContent += getIndentationString(of: line) // add same indentation to annotation as to line it belongs to
                 newContent += "@available(iOS \(minimumIOSVersion), *)\n"
                 changes += 1
                 totalChanges += 1
