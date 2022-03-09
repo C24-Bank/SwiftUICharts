@@ -2,12 +2,20 @@
 
 import Foundation
 
+//
+// MARK: - Configuration
+//
+
 let minimumIOSVersion = "14.0"
 let rootPath = "../.."
 
-let enumerator = FileManager.default.enumerator(atPath: rootPath)!
+//
+// MARK: - Main Script
+//
 
 print("Checking files for missing availability annotations...")
+
+let enumerator = FileManager.default.enumerator(atPath: rootPath)!
 var totalChanges = 0
 for file in enumerator {
     let completePath = rootPath + "/" + (file as! String)
@@ -31,11 +39,7 @@ for file in enumerator {
             lineCopy = lineCopy.replacingOccurrences(of: "final", with: "")
             lineCopy = lineCopy.trimmingCharacters(in: .whitespacesAndNewlines)
             if lineCopy.starts(with: "class") || lineCopy.starts(with: "struct") || lineCopy.starts(with: "extension") || lineCopy.starts(with: "enum") || lineCopy.starts(with: "protocol") || lineCopy.starts(with: "typealias") {
-                let test = line.rangeOfCharacter(from: .whitespacesAndNewlines.inverted)
-                let test2 = line[line.startIndex..<test!.lowerBound]
-//                let test2 = line.distance(from: line.startIndex, to: test!.lowerBound)
-//                newContent += (0..<test2).reduce("", { lol, _ in lol + " " })
-//                newContent += test2
+                newContent += getIndentationString(of: line)
                 newContent += "@available(iOS \(minimumIOSVersion), *)\n"
                 changes += 1
                 totalChanges += 1
@@ -51,3 +55,15 @@ for file in enumerator {
     }
 }
 print("Done (\(totalChanges) annotations added).")
+
+//
+// MARK: - Helper
+//
+
+func getIndentationString(of line: String) -> Substring {
+    guard let firstCharacterIndex = line.rangeOfCharacter(from: .whitespacesAndNewlines.inverted)?.lowerBound else {
+        return ""
+    }
+    
+    return line[line.startIndex..<firstCharacterIndex]
+}
