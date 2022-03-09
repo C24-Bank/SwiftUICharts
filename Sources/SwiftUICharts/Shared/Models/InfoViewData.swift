@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Data model to pass view information internally for the `InfoBox`, `FloatingInfoBox` and `HeaderBox`.
  */
+@available(iOS 14.0, *)
 public struct InfoViewData<DP: CTDataPointBaseProtocol> {
     
     /**

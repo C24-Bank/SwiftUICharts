@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 public protocol TouchInfoDisplayable {
     /**
      Sets the data point info box location while keeping it within the parent view.

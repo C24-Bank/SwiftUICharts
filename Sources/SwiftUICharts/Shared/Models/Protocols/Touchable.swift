@@ -8,6 +8,7 @@
 import SwiftUI
 
 // MARK: - Touch
+@available(iOS 14.0, *)
 public protocol Touchable {
     
     /// A type representing a view for the results of the touch interaction.

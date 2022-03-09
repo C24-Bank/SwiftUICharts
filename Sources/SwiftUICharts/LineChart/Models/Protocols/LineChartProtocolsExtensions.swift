@@ -8,6 +8,7 @@
 import SwiftUI
 
 // MARK: - Box Location
+@available(iOS 14.0, *)
 extension CTLineBarChartDataProtocol {
     public func setBoxLocationation(touchLocation: CGFloat, boxFrame: CGRect, chartSize: CGRect) -> CGFloat {        
         var returnPoint: CGFloat = .zero
@@ -21,6 +22,7 @@ extension CTLineBarChartDataProtocol {
         return returnPoint + (self.viewData.yAxisLabelWidth.max() ?? 0) + self.viewData.yAxisTitleWidth + (self.viewData.hasYAxisLabels ? 4 : 0) // +4 For Padding
     }
 }
+@available(iOS 14.0, *)
 extension CTLineBarChartDataProtocol where Self: isHorizontal {
     public func setBoxLocationation(touchLocation: CGFloat, boxFrame: CGRect, chartSize: CGRect) -> CGFloat {
         var returnPoint: CGFloat = .zero
@@ -36,6 +38,7 @@ extension CTLineBarChartDataProtocol where Self: isHorizontal {
 }
 
 // MARK: - Markers
+@available(iOS 14.0, *)
 extension CTLineChartDataProtocol {
     internal func markerSubView(
         markerData: MarkerData,
@@ -58,6 +61,7 @@ extension CTLineChartDataProtocol {
 
 
 // MARK: - Legends
+@available(iOS 14.0, *)
 extension CTLineChartDataProtocol where Self.SetType.ID == UUID,
                                         Self.SetType: CTLineChartDataSet {
     internal func setupLegends() {
@@ -65,12 +69,14 @@ extension CTLineChartDataProtocol where Self.SetType.ID == UUID,
     }
 }
 
+@available(iOS 14.0, *)
 extension CTLineChartDataProtocol where Self.SetType == MultiLineDataSet {
     internal func setupLegends() {
         dataSets.dataSets.forEach { lineLegendSetup(dataSet: $0) }
     }
 }
 
+@available(iOS 14.0, *)
 extension CTLineChartDataProtocol {
     internal func lineLegendSetup<DS: CTLineChartDataSet>(dataSet: DS) where DS.ID == UUID {
 //        if dataSet.style.lineColour.colourType == .colour,
@@ -108,6 +114,7 @@ extension CTLineChartDataProtocol {
     }
 }
 
+@available(iOS 14.0, *)
 extension CTLineChartDataProtocol where Self.SetType.ID == UUID,
                                         Self.SetType: CTRangedLineChartDataSet,
                                         Self.SetType.Styling: CTRangedLineStyle {
@@ -148,6 +155,7 @@ extension CTLineChartDataProtocol where Self.SetType.ID == UUID,
 }
 
 // MARK: - Accessibility
+@available(iOS 14.0, *)
 extension CTLineChartDataProtocol where SetType: CTLineChartDataSet {
     public func getAccessibility() -> some View {
         ForEach(dataSets.dataPoints.indices, id: \.self) { point in

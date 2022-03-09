@@ -7,6 +7,7 @@
 
 import Foundation
 
+@available(iOS 14.0, *)
 extension NumberFormatter {
     public static var `default`: NumberFormatter = {
         let formatter = NumberFormatter()

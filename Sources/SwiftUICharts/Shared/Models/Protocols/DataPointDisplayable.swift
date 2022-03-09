@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@available(iOS 14.0, *)
 public protocol DataPointDisplayable {
     /**
      Displays the relevent Legend for the data point.
@@ -18,12 +19,14 @@ public protocol DataPointDisplayable {
     func formattedValue(from formatter: NumberFormatter) -> String
 }
 
+@available(iOS 14.0, *)
 extension DataPointDisplayable where Self: CTStandardDataPointProtocol & CTnotRanged {
     public func formattedValue(from formatter: NumberFormatter) -> String {
         return formatter.string(from: NSNumber(value: value)) ?? ""
     }
 }
 
+@available(iOS 14.0, *)
 extension DataPointDisplayable where Self: CTRangeDataPointProtocol & CTisRanged {
     public func formattedValue(from formatter: NumberFormatter) -> String {
         let upper = formatter.string(from: NSNumber(value: upperValue)) ?? ""
@@ -32,6 +35,7 @@ extension DataPointDisplayable where Self: CTRangeDataPointProtocol & CTisRanged
     }
 }
 
+@available(iOS 14.0, *)
 extension DataPointDisplayable where Self: CTStandardDataPointProtocol & Ignorable & CTnotRanged {
     public func formattedValue(from formatter: NumberFormatter) -> String {
         if !ignore {
@@ -42,6 +46,7 @@ extension DataPointDisplayable where Self: CTStandardDataPointProtocol & Ignorab
     }
 }
 
+@available(iOS 14.0, *)
 extension DataPointDisplayable where Self: CTRangeDataPointProtocol & Ignorable & CTisRanged {
     public func formattedValue(from formatter: NumberFormatter) -> String {
         if !ignore {

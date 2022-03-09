@@ -14,6 +14,7 @@ import SwiftUI
  case curvedLine // Dual control point curved line
  ```
  */
+@available(iOS 14.0, *)
 public enum LineType {
     /// Straight line from point to point
     case line
@@ -29,6 +30,7 @@ public enum LineType {
  case filledOutLine // Both fill and stroke
  ```
  */
+@available(iOS 14.0, *)
 public enum PointType {
     /// Just fill
     case filled
@@ -46,6 +48,7 @@ public enum PointType {
  case roundSquare
  ```
  */
+@available(iOS 14.0, *)
 public enum PointShape {
     /// Circle Shape
     case circle
@@ -62,6 +65,7 @@ public enum PointShape {
  case point // Attached to the data points.
  ```
  */
+@available(iOS 14.0, *)
 public enum MarkerAttachment {
     /// Attached to the line.
     case line(dot: Dot)
@@ -82,6 +86,7 @@ public enum MarkerAttachment {
  case topTrailing(attachment: MarkerAttachment) // From top and trailing edges meeting at a specified point.
  ```
  */
+@available(iOS 14.0, *)
 public enum LineMarkerType: MarkerType {
     /// No overlay markers.
     case none
@@ -109,6 +114,7 @@ public enum LineMarkerType: MarkerType {
  case style(_ style: DotStyle) // Adds a dot the line at point of touch.
  ```
  */
+@available(iOS 14.0, *)
 public enum Dot {
     /// No Dot
     case none

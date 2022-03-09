@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 internal struct ExtraLineShape<DataPoint>: Shape where DataPoint: CTStandardDataPointProtocol & Ignorable {
     
     private let dataPoints: [DataPoint]

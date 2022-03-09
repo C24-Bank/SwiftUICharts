@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Add rectangle overlay when in Voice Reader mode.
  */
+@available(iOS 14.0, *)
 internal struct AccessibilityRectangle: Shape {
     
     private let dataPointCount: Int

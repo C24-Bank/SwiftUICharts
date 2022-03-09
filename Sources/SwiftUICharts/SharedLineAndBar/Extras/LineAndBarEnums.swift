@@ -15,6 +15,7 @@ import SwiftUI
  case bottom
  ```
  */
+@available(iOS 14.0, *)
 public enum XAxisLabelPosistion {
     case top
     case bottom
@@ -31,6 +32,7 @@ public enum XAxisLabelPosistion {
  case chartData // ChartData --> xAxisLabels
  ```
  */
+@available(iOS 14.0, *)
 public enum LabelsFrom {
     /// ChartData --> DataPoint --> xAxisLabel
     case dataPoint(rotation: Angle = Angle.degrees(0))
@@ -46,6 +48,7 @@ public enum LabelsFrom {
  case trailing
  ```
  */
+@available(iOS 14.0, *)
 public enum YAxisLabelPosistion {
     case leading
     case trailing
@@ -60,6 +63,7 @@ public enum YAxisLabelPosistion {
  case center(specifier: String) // Places the label in the center of chart.
  ```
  */
+@available(iOS 14.0, *)
 public enum DisplayValue {
     /// No label.
     case none
@@ -77,6 +81,7 @@ public enum DisplayValue {
  case zero // Set 0 as the lowest value
  ```
  */
+@available(iOS 14.0, *)
 public enum Baseline: Hashable {
     /// Lowest value in the data set(s)
     case minimumValue
@@ -93,6 +98,7 @@ public enum Baseline: Hashable {
  case maximum(of: Double) // Set a custom topline
  ```
  */
+@available(iOS 14.0, *)
 public enum Topline: Hashable {
     /// Highest value in the data set(s)
     case maximumValue
@@ -111,6 +117,7 @@ public enum Topline: Hashable {
  case custom // Custom labels array -- `ChartData -> yAxisLabels`
  ```
  */
+@available(iOS 14.0, *)
 public enum YAxisLabelType {
     /// Auto generated, numeric labels.
     case numeric
@@ -128,6 +135,7 @@ public enum YAxisLabelType {
  case custom(colour: ChartColour, size: CGFloat) // Set custom style.
  ```
  */
+@available(iOS 14.0, *)
 public enum AxisColour {
     /// No colour marker.
     case none

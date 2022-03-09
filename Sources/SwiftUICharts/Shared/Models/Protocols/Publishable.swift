@@ -11,6 +11,7 @@ import Combine
 /**
  Protocol to enable publishing data streams over the Combine framework
  */
+@available(iOS 14.0, *)
 public protocol Publishable {
     
     associatedtype DataPoint: CTDataPointBaseProtocol

@@ -16,6 +16,7 @@ import Foundation
  case extraLine // Extra Line Type
  ```
  */
+@available(iOS 14.0, *)
 public enum ChartType {
     /// Line Chart Type
     case line

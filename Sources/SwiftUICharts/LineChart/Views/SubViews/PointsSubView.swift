@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 internal struct PointsSubView<ChartData, DataSet>: View where ChartData: CTChartData,
                                                               DataSet: CTLineChartDataSet,
                                                               DataSet.DataPoint: CTLineDataPointProtocol & CTStandardDataPointProtocol & Ignorable {
@@ -106,6 +107,7 @@ internal struct PointsSubView<ChartData, DataSet>: View where ChartData: CTChart
 }
 
 
+@available(iOS 14.0, *)
 internal struct FilledPointsSubView<ChartData, DataSet>: View where ChartData: CTChartData,
                                                                     DataSet: CTLineChartDataSet,
                                                                     DataSet.DataPoint: CTStandardLineDataPoint & CTLineDataPointProtocol & Ignorable {

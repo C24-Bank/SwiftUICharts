@@ -7,12 +7,14 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 public protocol Colourable: Equatable {}
 
 // MARK: - Chart Data
 /**
  A protocol to extend functionality of `CTChartData` specifically for Line and Bar Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTLineBarChartDataProtocol: CTChartData where CTStyle: CTLineBarChartStyle {
     
     /**
@@ -88,11 +90,13 @@ public protocol CTLineBarChartDataProtocol: CTChartData where CTStyle: CTLineBar
 /**
  A protocol to get the correct touch overlay marker.
  */
+@available(iOS 14.0, *)
 public protocol MarkerType {}
 
 /**
  A protocol to extend functionality of `CTChartStyle` specifically for  Line and Bar Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTLineBarChartStyle: CTChartStyle {
     
     /// A type representing touch overlay marker type. -- `MarkerType`
@@ -215,6 +219,7 @@ public protocol CTLineBarChartStyle: CTChartStyle {
 /**
  A protocol to extend functionality of `CTStandardDataPointProtocol` specifically for Line and Bar Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTLineBarDataPointProtocol: CTDataPointBaseProtocol {
     
     /**
@@ -223,6 +228,7 @@ public protocol CTLineBarDataPointProtocol: CTDataPointBaseProtocol {
     var xAxisLabel: String? { get set }
 }
 
+@available(iOS 14.0, *)
 extension CTLineBarDataPointProtocol {
     
     /**

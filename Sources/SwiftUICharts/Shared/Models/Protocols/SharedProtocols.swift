@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 public typealias ChartConformance = GetDataProtocol & Publishable & PointOfInterestProtocol & Touchable & TouchInfoDisplayable
 
 // MARK: Chart Data
@@ -15,6 +16,7 @@ public typealias ChartConformance = GetDataProtocol & Publishable & PointOfInter
  
  All Chart Data models ultimately conform to this.
  */
+@available(iOS 14.0, *)
 public protocol CTChartData: ObservableObject, Identifiable {
     
     /// A type representing a  data set. -- `CTDataSetProtocol`
@@ -82,6 +84,7 @@ public protocol CTChartData: ObservableObject, Identifiable {
 /**
  Main protocol to set conformace for types of Data Sets.
  */
+@available(iOS 14.0, *)
 public protocol CTDataSetProtocol: Hashable, Identifiable {
     var id: ID { get }
 }
@@ -89,6 +92,7 @@ public protocol CTDataSetProtocol: Hashable, Identifiable {
 /**
  Protocol for data sets that only require a single set of data .
  */
+@available(iOS 14.0, *)
 public protocol CTSingleDataSetProtocol: CTDataSetProtocol {
     
     /// A type representing a data point. -- `CTChartDataPoint`
@@ -104,6 +108,7 @@ public protocol CTSingleDataSetProtocol: CTDataSetProtocol {
 /**
  Protocol for data sets that require a multiple sets of data .
  */
+@available(iOS 14.0, *)
 public protocol CTMultiDataSetProtocol: CTDataSetProtocol {
     
     /// A type representing a single data set -- `SingleDataSet`
@@ -121,6 +126,7 @@ public protocol CTMultiDataSetProtocol: CTDataSetProtocol {
 /**
  Protocol to set base configuration for data points.
  */
+@available(iOS 14.0, *)
 public protocol CTDataPointBaseProtocol: Hashable, Identifiable {
     
     var id: ID { get }
@@ -163,6 +169,7 @@ public protocol CTDataPointBaseProtocol: Hashable, Identifiable {
  A protocol to extend functionality of `CTDataPointBaseProtocol` for any chart
  type that needs a value.
  */
+@available(iOS 14.0, *)
 public protocol CTStandardDataPointProtocol: CTDataPointBaseProtocol {
     
     /**
@@ -175,6 +182,7 @@ public protocol CTStandardDataPointProtocol: CTDataPointBaseProtocol {
  A protocol to extend functionality of `CTDataPointBaseProtocol` for any chart
  type that needs a upper and lower values.
  */
+@available(iOS 14.0, *)
 public protocol CTRangeDataPointProtocol: CTDataPointBaseProtocol {
     /// Value of the upper range of the data point.
     var upperValue: Double { get set }
@@ -191,6 +199,7 @@ public protocol CTRangeDataPointProtocol: CTDataPointBaseProtocol {
 /**
  Protocol to set the styling data for the chart.
  */
+@available(iOS 14.0, *)
 public protocol CTChartStyle {
     
     /**
@@ -257,5 +266,7 @@ public protocol CTChartStyle {
     var globalAnimation: Animation { get set }
 }
 
+@available(iOS 14.0, *)
 public protocol CTisRanged {}
+@available(iOS 14.0, *)
 public protocol CTnotRanged {}

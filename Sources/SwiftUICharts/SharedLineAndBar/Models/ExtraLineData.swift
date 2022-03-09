@@ -12,6 +12,7 @@ import SwiftUI
  
  This model contains the data and styling information for a single line, line chart.
  */
+@available(iOS 14.0, *)
 public struct ExtraLineData: Identifiable {
     
     public let id: UUID = UUID()
@@ -131,7 +132,9 @@ public struct ExtraLineData: Identifiable {
     }
 }
 
+@available(iOS 14.0, *)
 extension ExtraLineData {
+    @available(iOS 14.0, *)
     internal typealias DataPointAndLocation = (value: Double?, description: String?, _legendTag: String?, location: CGPoint?)
     
     internal func pointAndLocation(touchLocation: CGPoint, chartSize: CGRect) -> DataPointAndLocation {

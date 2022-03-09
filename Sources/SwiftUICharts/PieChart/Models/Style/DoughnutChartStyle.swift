@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Model for controlling the overall aesthetic of the chart.
  */
+@available(iOS 14.0, *)
 public struct DoughnutChartStyle: CTDoughnutChartStyle {
     @available(*, deprecated, message: "Please use \"infoDisplay\" instead.")
     public var infoBoxPlacement: InfoBoxPlacement = .floating

@@ -10,6 +10,7 @@ import SwiftUI
 /**
   Control of the styling of the Extra Line.
  */
+@available(iOS 14.0, *)
 public struct ExtraLineStyle {
     
     public var lineColour: ChartColour
@@ -79,6 +80,7 @@ public struct ExtraLineStyle {
      case raise // Animates using `.scale`.
      ```
      */
+    @available(iOS 14.0, *)
     public enum AnimationType: Hashable {
         /// Draws the line using `.trim`.
         case draw
@@ -92,6 +94,7 @@ public struct ExtraLineStyle {
      There is different spacing for line charts and bar charts,
      this sets that up.
      */
+    @available(iOS 14.0, *)
     public enum SpacingType: Hashable {
         case line
         case bar

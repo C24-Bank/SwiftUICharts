@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Model for controlling the overall aesthetic of the chart.
  */
+@available(iOS 14.0, *)
 public struct PieChartStyle: CTPieChartStyle {
     
     // MARK: Deprecations

@@ -14,6 +14,7 @@ import Combine
  This model contains the data and styling information for a single line, line chart.
  */
 @available(macOS 11.0, iOS 14, watchOS 7, tvOS 14, *)
+@available(iOS 14.0, *)
 public final class LineChartData: CTLineChartDataProtocol, ChartConformance {
     
     // MARK: Properties
@@ -211,7 +212,9 @@ public final class LineChartData: CTLineChartDataProtocol, ChartConformance {
         infoView.isTouchCurrent = false
     }
     
+    @available(iOS 14.0, *)
     public typealias SetType = LineDataSet
+    @available(iOS 14.0, *)
     public typealias DataPoint = LineChartDataPoint
     
     // MARK: Deprecated

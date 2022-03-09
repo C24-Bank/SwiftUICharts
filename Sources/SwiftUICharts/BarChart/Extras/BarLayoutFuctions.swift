@@ -7,6 +7,7 @@
 
 import CoreGraphics
 
+@available(iOS 14.0, *)
 internal struct BarLayout {
     internal static func barWidth(_ totalWidth: CGFloat, _ widthFactor: CGFloat) -> CGFloat {
         return totalWidth * widthFactor

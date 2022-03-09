@@ -16,6 +16,7 @@ import SwiftUI
  case dataPoints // System icon overlay
  ```
  */
+@available(iOS 14.0, *)
 public enum OverlayType: Hashable {
     /// No overlay
     case none

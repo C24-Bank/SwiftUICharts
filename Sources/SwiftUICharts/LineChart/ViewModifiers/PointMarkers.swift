@@ -10,6 +10,7 @@ import SwiftUI
 /**
  ViewModifier for for laying out point markers.
  */
+@available(iOS 14.0, *)
 internal struct PointMarkers<T>: ViewModifier where T: CTLineChartDataProtocol & GetDataProtocol {
     
     @ObservedObject private var chartData: T
@@ -27,6 +28,7 @@ internal struct PointMarkers<T>: ViewModifier where T: CTLineChartDataProtocol &
     }
 }
 
+@available(iOS 14.0, *)
 extension View {
     /**
      Lays out markers over each of the data point.

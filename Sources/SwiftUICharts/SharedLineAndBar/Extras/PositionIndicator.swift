@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 struct PositionIndicator {
     /**
      Gets the position on a line relative to where the location of the touch or pointer interaction.

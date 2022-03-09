@@ -8,6 +8,7 @@
 import SwiftUI
 
 // MARK: - View
+@available(iOS 14.0, *)
 internal struct ExtraLine<T>: ViewModifier where T: CTLineBarChartDataProtocol {
     
     @ObservedObject private var chartData: T
@@ -96,6 +97,7 @@ internal struct ExtraLine<T>: ViewModifier where T: CTLineBarChartDataProtocol {
 
 
 // MARK: - View Extension
+@available(iOS 14.0, *)
 extension View {
     /**
      Adds an seperate line that is over-layed on top of a other chart.
@@ -151,6 +153,7 @@ extension View {
 }
 
 // MARK: - Colour
+@available(iOS 14.0, *)
 internal struct ColourExtraLineView<ChartData>: View where ChartData: CTLineBarChartDataProtocol {
     
     @ObservedObject private var chartData: ChartData
@@ -192,6 +195,7 @@ internal struct ColourExtraLineView<ChartData>: View where ChartData: CTLineBarC
 }
 
 // MARK: - Colours
+@available(iOS 14.0, *)
 internal struct ColoursExtraLineView<ChartData>: View where ChartData: CTLineBarChartDataProtocol {
     
     @ObservedObject private var chartData: ChartData
@@ -244,6 +248,7 @@ internal struct ColoursExtraLineView<ChartData>: View where ChartData: CTLineBar
 }
 
 // MARK: - Stops
+@available(iOS 14.0, *)
 internal struct StopsExtraLineView<ChartData>: View where ChartData: CTLineBarChartDataProtocol {
     
     @ObservedObject private var chartData: ChartData
@@ -296,6 +301,7 @@ internal struct StopsExtraLineView<ChartData>: View where ChartData: CTLineBarCh
 }
 
 // MARK: - Points
+@available(iOS 14.0, *)
 internal struct PointsExtraLineView<ChartData>: View where ChartData: CTLineBarChartDataProtocol {
     
     @ObservedObject private var chartData: ChartData
@@ -349,6 +355,7 @@ internal struct PointsExtraLineView<ChartData>: View where ChartData: CTLineBarC
 }
 
 // MARK: - Filled Data Point
+@available(iOS 14.0, *)
 internal struct FilledDataPointExtraLineView<ChartData>: View where ChartData: CTLineBarChartDataProtocol {
     
     @ObservedObject private var chartData: ChartData
@@ -423,6 +430,7 @@ internal struct FilledDataPointExtraLineView<ChartData>: View where ChartData: C
 }
 
 // MARK: - OutLine DataPoint
+@available(iOS 14.0, *)
 internal struct OutLineDataPointExtraLineView<ChartData>: View where ChartData: CTLineBarChartDataProtocol {
     
     @ObservedObject private var chartData: ChartData
@@ -499,6 +507,7 @@ internal struct OutLineDataPointExtraLineView<ChartData>: View where ChartData: 
 // MARK: - Bar Point 
 /// Custom version of ``Point`` for Extra Line
 /// when being used on a Bar Chart.
+@available(iOS 14.0, *)
 internal struct PointBarSpcing: Shape {
     
     private let value: Double

@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Data for a single ranged data point.
  */
+@available(iOS 14.0, *)
 public struct RangedLineChartDataPoint: CTRangedLineDataPoint, Ignorable, DataPointDisplayable {
     
     public let id: UUID = UUID()
@@ -57,6 +58,7 @@ public struct RangedLineChartDataPoint: CTRangedLineDataPoint, Ignorable, DataPo
     }
 }
 
+@available(iOS 14.0, *)
 extension RangedLineChartDataPoint {
     internal init(
         value: Double,

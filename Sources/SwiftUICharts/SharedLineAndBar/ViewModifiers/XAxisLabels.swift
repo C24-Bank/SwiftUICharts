@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Labels for the X axis.
  */
+@available(iOS 14.0, *)
 internal struct XAxisLabels<T>: ViewModifier where T: CTLineBarChartDataProtocol {
     
     @ObservedObject private var chartData: T
@@ -43,6 +44,7 @@ internal struct XAxisLabels<T>: ViewModifier where T: CTLineBarChartDataProtocol
     }
 }
 
+@available(iOS 14.0, *)
 extension View {
     /**
      Labels for the X axis.

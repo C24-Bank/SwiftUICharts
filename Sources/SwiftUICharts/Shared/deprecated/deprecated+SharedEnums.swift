@@ -17,6 +17,7 @@ import Foundation
  ```
  */
 @available(*, deprecated, message: "Please use \"ChartColour\" instead.")
+@available(iOS 14.0, *)
 public enum ColourType {
     /// Single Colour
     case colour
@@ -36,6 +37,7 @@ public enum ColourType {
  ```
  */
 @available(*, deprecated, message: "Please use \"infoDisplay\" instead.")
+@available(iOS 14.0, *)
 public enum InfoBoxPlacement {
     /// Follows input across the chart.
     case floating
@@ -55,6 +57,7 @@ public enum InfoBoxPlacement {
  ```
  */
 @available(*, deprecated, message: "Please use \"infoDisplay\" instead.")
+@available(iOS 14.0, *)
 public enum InfoBoxAlignment {
     /// Puts the legend, value and description verticaly
     case vertical
@@ -73,6 +76,7 @@ public enum InfoBoxAlignment {
  ```
  */
 @available(*, deprecated, message: "Now done using Number Formatter")
+@available(iOS 14.0, *)
 public enum TouchUnit {
     /// No units
     case none

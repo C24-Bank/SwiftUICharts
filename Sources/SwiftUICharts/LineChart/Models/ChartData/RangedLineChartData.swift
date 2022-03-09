@@ -14,6 +14,7 @@ import Combine
  This model contains the data and styling information for a ranged line chart.
  */
 @available(macOS 11.0, iOS 14, watchOS 7, tvOS 14, *)
+@available(iOS 14.0, *)
 public final class RangedLineChartData: CTLineChartDataProtocol, ChartConformance {
     
     // MARK: Properties
@@ -231,7 +232,9 @@ public final class RangedLineChartData: CTLineChartDataProtocol, ChartConformanc
         infoView.isTouchCurrent = false
     }
     
+    @available(iOS 14.0, *)
     public typealias SetType = RangedLineDataSet
+    @available(iOS 14.0, *)
     public typealias DataPoint = RangedLineChartDataPoint
     
     // MARK: Deprecated

@@ -12,6 +12,7 @@ import SwiftUI
  
  [SO](https://stackoverflow.com/a/56763282)
  */
+@available(iOS 14.0, *)
 internal struct RoundedRectangleBarShape: Shape {
     
     private let tl: CGFloat

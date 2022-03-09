@@ -8,6 +8,7 @@
 import SwiftUI
 
 // MARK: - Chart
+@available(iOS 14.0, *)
 public struct HorizontalBarChart<ChartData>: View where ChartData: HorizontalBarChartData {
     
     @ObservedObject private var chartData: ChartData
@@ -34,6 +35,7 @@ public struct HorizontalBarChart<ChartData>: View where ChartData: HorizontalBar
 }
 
 // MARK: - Sub View
+@available(iOS 14.0, *)
 internal struct HorizontalBarChartSubView<ChartData>: View where ChartData: HorizontalBarChartData {
     
     @ObservedObject private var chartData: ChartData
@@ -63,6 +65,7 @@ internal struct HorizontalBarChartSubView<ChartData>: View where ChartData: Hori
 }
 
 // MARK: - Element
+@available(iOS 14.0, *)
 internal struct HorizontalBarElement<ChartData>: View where ChartData: CTBarChartDataProtocol & GetDataProtocol {
     
     @ObservedObject private var chartData: ChartData

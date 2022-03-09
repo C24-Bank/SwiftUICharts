@@ -12,6 +12,7 @@ import Combine
  Data for drawing and styling a standard Bar Chart.
  */
 @available(macOS 11.0, iOS 14, watchOS 7, tvOS 14, *)
+@available(iOS 14.0, *)
 public final class BarChartData: CTBarChartDataProtocol, ChartConformance {
     
     // MARK: Properties
@@ -208,8 +209,11 @@ public final class BarChartData: CTBarChartDataProtocol, ChartConformance {
         infoView.isTouchCurrent = false
     }
     
+    @available(iOS 14.0, *)
     public typealias SetType = BarDataSet
+    @available(iOS 14.0, *)
     public typealias DataPoint = BarChartDataPoint
+    @available(iOS 14.0, *)
     public typealias CTStyle = BarChartStyle
     
     // MARK: Deprecated

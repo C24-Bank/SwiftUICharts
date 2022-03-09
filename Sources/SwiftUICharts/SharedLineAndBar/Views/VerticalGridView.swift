@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Sub view of the X axis grid view modifier.
  */
+@available(iOS 14.0, *)
 internal struct VerticalGridView<T>: View where T: CTLineBarChartDataProtocol {
     
     @ObservedObject private var chartData: T

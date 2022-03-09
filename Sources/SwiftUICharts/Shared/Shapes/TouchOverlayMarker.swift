@@ -8,6 +8,7 @@
 import SwiftUI
 
 /// Vertical line from top to bottom.
+@available(iOS 14.0, *)
 internal struct Vertical: Shape {
     
     private var position: CGPoint
@@ -26,6 +27,7 @@ internal struct Vertical: Shape {
 }
 
 /// Full width and height of view intersecting at a specified point.
+@available(iOS 14.0, *)
 internal struct MarkerFull: Shape {
     
     private var position: CGPoint
@@ -51,6 +53,7 @@ internal struct MarkerFull: Shape {
 }
 
 /// From bottom and leading edges meeting at a specified point.
+@available(iOS 14.0, *)
 internal struct MarkerBottomLeading: Shape {
     
     private var position: CGPoint
@@ -76,6 +79,7 @@ internal struct MarkerBottomLeading: Shape {
 }
 
 /// From bottom and trailing edges meeting at a specified point.
+@available(iOS 14.0, *)
 internal struct MarkerBottomTrailing: Shape {
     
     private var position: CGPoint
@@ -101,6 +105,7 @@ internal struct MarkerBottomTrailing: Shape {
 }
 
 // From top and leading edges meeting at a specified point.
+@available(iOS 14.0, *)
 internal struct MarkerTopLeading: Shape {
     
     private var position: CGPoint
@@ -126,6 +131,7 @@ internal struct MarkerTopLeading: Shape {
 }
 
 // From top and trailing edges meeting at a specified point.
+@available(iOS 14.0, *)
 internal struct MarkerTopTrailing: Shape {
     
     private var position: CGPoint

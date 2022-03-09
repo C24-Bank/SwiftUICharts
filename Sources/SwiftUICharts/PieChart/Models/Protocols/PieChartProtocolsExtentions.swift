@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - Extentions
 
+@available(iOS 14.0, *)
 extension CTPieDoughnutChartDataProtocol where SetType == PieDataSet, DataPoint == PieChartDataPoint {
     
     /**
@@ -56,6 +57,7 @@ extension CTPieDoughnutChartDataProtocol where SetType == PieDataSet, DataPoint 
     }
 }
 
+@available(iOS 14.0, *)
 extension CTPieDoughnutChartDataProtocol where Self.SetType.DataPoint.ID == UUID,
                                                Self.SetType: CTSingleDataSetProtocol,
                                                Self.SetType.DataPoint: CTPieDataPoint {
@@ -72,6 +74,7 @@ extension CTPieDoughnutChartDataProtocol where Self.SetType.DataPoint.ID == UUID
     }
 }
 
+@available(iOS 14.0, *)
 extension View {
     internal func overlay<CD: CTPieDoughnutChartDataProtocol>(
         dataPoint: PieChartDataPoint,
@@ -108,6 +111,7 @@ extension View {
     }
 }
 
+@available(iOS 14.0, *)
 extension CTPieDoughnutChartDataProtocol {
     internal func getOverlayPosition(
         rect: CGRect,

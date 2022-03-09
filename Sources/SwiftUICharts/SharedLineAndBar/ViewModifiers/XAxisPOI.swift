@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Configurable Point of interest
  */
+@available(iOS 14.0, *)
 internal struct XAxisPOI<T>: ViewModifier where T: CTLineBarChartDataProtocol & GetDataProtocol & PointOfInterestProtocol {
     
     private let uuid: UUID = UUID()
@@ -133,6 +134,7 @@ internal struct XAxisPOI<T>: ViewModifier where T: CTLineBarChartDataProtocol & 
 
 
 // MARK: - Extension
+@available(iOS 14.0, *)
 extension View {
     /**
      Vertical line marking a custom value.

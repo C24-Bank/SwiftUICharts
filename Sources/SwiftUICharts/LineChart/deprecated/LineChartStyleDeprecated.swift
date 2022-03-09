@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 extension LineChartStyle {
     @available(*, deprecated, message: "Please use \"other init\" instead.")
     /// Model for controlling the overall aesthetic of the chart.

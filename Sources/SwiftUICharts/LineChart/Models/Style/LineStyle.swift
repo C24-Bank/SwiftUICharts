@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Model for controlling the styling for individual lines.
  */
+@available(iOS 14.0, *)
 public struct LineStyle: CTLineStyle, Hashable {
 
     public var lineColour: ChartColour

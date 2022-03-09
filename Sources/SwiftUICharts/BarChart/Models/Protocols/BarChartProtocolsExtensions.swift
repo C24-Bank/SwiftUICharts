@@ -8,6 +8,7 @@
 import SwiftUI
 
 // MARK: - Markers
+@available(iOS 14.0, *)
 extension CTBarChartDataProtocol where Self.CTStyle.Mark == BarMarkerType,
                                        Self: Publishable {
     internal func markerSubView(
@@ -40,6 +41,7 @@ extension CTBarChartDataProtocol where Self.CTStyle.Mark == BarMarkerType,
 //
 //
 // MARK: Standard / Ranged
+@available(iOS 14.0, *)
 extension CTBarChartDataProtocol where Self.SetType.ID == UUID,
                                        Self.SetType.DataPoint.ID == UUID,
                                        Self.SetType: CTStandardBarChartDataSet,
@@ -122,6 +124,7 @@ extension CTBarChartDataProtocol where Self.SetType.ID == UUID,
 }
 
 // MARK: Multi Bar
+@available(iOS 14.0, *)
 extension CTMultiBarChartDataProtocol {
     internal func setupLegends() {
 //        for group in self.groups {

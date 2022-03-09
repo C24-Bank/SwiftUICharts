@@ -12,6 +12,7 @@ import SwiftUI
  
  Contains information specific to the line and range fill.
  */
+@available(iOS 14.0, *)
 public struct RangedLineDataSet: CTRangedLineChartDataSet, DataFunctionsProtocol {
     
     public let id: UUID = UUID()
@@ -42,6 +43,8 @@ public struct RangedLineDataSet: CTRangedLineChartDataSet, DataFunctionsProtocol
         self.style = style
     }
     
+    @available(iOS 14.0, *)
     public typealias ID = UUID
+    @available(iOS 14.0, *)
     public typealias Styling = RangedLineStyle
 }

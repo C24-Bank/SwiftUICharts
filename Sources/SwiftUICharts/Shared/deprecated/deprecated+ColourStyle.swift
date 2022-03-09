@@ -11,6 +11,7 @@ import SwiftUI
  Model for setting up colour styling.
  */
 @available(*, deprecated, message: "Please use \"ChartColour\" instead.")
+@available(iOS 14.0, *)
 public struct ColourStyle: Colourable, Hashable {
     
     public var colourType: ColourType
@@ -72,6 +73,7 @@ public struct ColourStyle: Colourable, Hashable {
     }
 }
 /// Was ColourStyle
+@available(iOS 14.0, *)
 public enum ChartColour: Colourable, Hashable, Equatable {
     case colour(colour: Color)
     case gradient(colours: [Color], startPoint: UnitPoint, endPoint: UnitPoint)

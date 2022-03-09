@@ -11,6 +11,7 @@ import SwiftUI
  ViewModifier for for laying out point markers.
  */
 @available(*, deprecated, message: "Build in to Filled Line Chart now.")
+@available(iOS 14.0, *)
 internal struct FilledTopLine<T>: ViewModifier where T: LineChartData {
     
     @ObservedObject private var chartData: T
@@ -101,6 +102,7 @@ internal struct FilledTopLine<T>: ViewModifier where T: LineChartData {
     }
 }
 
+@available(iOS 14.0, *)
 extension View {
     /**
      Adds an independent line on top of FilledLineChart.

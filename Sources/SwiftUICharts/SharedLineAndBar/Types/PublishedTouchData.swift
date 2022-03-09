@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 public struct PublishedTouchData<DataPoint> {
     public let datapoint: DataPoint
     public let location: CGPoint

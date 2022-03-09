@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Main data set for a grouped bar charts.
  */
+@available(iOS 14.0, *)
 public struct GroupedBarDataSets: CTMultiDataSetProtocol, DataFunctionsProtocol {
     
     public let id: UUID = UUID()
@@ -24,6 +25,7 @@ public struct GroupedBarDataSets: CTMultiDataSetProtocol, DataFunctionsProtocol 
 /**
  Individual data sets for grouped bars charts.
  */
+@available(iOS 14.0, *)
 public struct GroupedBarDataSet: CTMultiBarChartDataSet {
     
     public let id: UUID = UUID()
@@ -39,6 +41,8 @@ public struct GroupedBarDataSet: CTMultiBarChartDataSet {
         self.setTitle = setTitle
     }
     
+    @available(iOS 14.0, *)
     public typealias ID = UUID
+    @available(iOS 14.0, *)
     public typealias DataPoint = GroupedBarDataPoint
 }

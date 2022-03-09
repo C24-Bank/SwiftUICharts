@@ -12,6 +12,7 @@ import Combine
  Data for drawing and styling a ranged Bar Chart.
  */
 @available(macOS 11.0, iOS 14, watchOS 7, tvOS 14, *)
+@available(iOS 14.0, *)
 public final class RangedBarChartData: CTRangedBarChartDataProtocol, ChartConformance {
     // MARK: Properties
     public let id: UUID = UUID()
@@ -217,8 +218,11 @@ public final class RangedBarChartData: CTRangedBarChartDataProtocol, ChartConfor
         infoView.isTouchCurrent = false
     }
     
+    @available(iOS 14.0, *)
     public typealias SetType = RangedBarDataSet
+    @available(iOS 14.0, *)
     public typealias DataPoint = RangedBarDataPoint
+    @available(iOS 14.0, *)
     public typealias CTStyle = BarChartStyle
     
     // MARK: Deprecated
@@ -257,6 +261,7 @@ public final class RangedBarChartData: CTRangedBarChartDataProtocol, ChartConfor
 }
 
 // MARK: Position
+@available(iOS 14.0, *)
 extension RangedBarChartData {
     func getBarPositionX(dataPoint: RangedBarDataPoint, height: CGFloat) -> CGFloat {
         let value = CGFloat((dataPoint.upperValue + dataPoint.lowerValue) / 2) - CGFloat(self.minValue)

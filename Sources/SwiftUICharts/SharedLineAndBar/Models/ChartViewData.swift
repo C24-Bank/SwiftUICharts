@@ -9,6 +9,7 @@ import SwiftUI
 /**
  Data model to pass view information internally so the layout can configure its self.
  */
+@available(iOS 14.0, *)
 public struct ChartViewData {
     
     // MARK: Chart

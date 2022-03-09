@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 internal struct ExtraYAxisLabels<T>: ViewModifier where T: CTLineBarChartDataProtocol {
     
     @ObservedObject private var chartData: T
@@ -46,6 +47,7 @@ internal struct ExtraYAxisLabels<T>: ViewModifier where T: CTLineBarChartDataPro
     }
 }
 
+@available(iOS 14.0, *)
 extension View {
     /**
      Adds a second set of Y axis labels.

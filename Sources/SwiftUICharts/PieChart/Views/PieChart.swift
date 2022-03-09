@@ -29,6 +29,7 @@ import SwiftUI
  .legends(chartData: data)
  ```
  */
+@available(iOS 14.0, *)
 public struct PieChart<ChartData>: View where ChartData: PieChartData {
     
     @ObservedObject private var chartData: ChartData

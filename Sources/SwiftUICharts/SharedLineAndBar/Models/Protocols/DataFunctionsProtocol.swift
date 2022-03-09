@@ -7,6 +7,7 @@
 
 import Foundation
 
+@available(iOS 14.0, *)
 public protocol DataFunctionsProtocol {
     /**
      Returns the highest value in the data set.
@@ -27,6 +28,7 @@ public protocol DataFunctionsProtocol {
     func average() -> Double
 }
 
+@available(iOS 14.0, *)
 public protocol GetDataProtocol {
     /**
      Returns the difference between the highest and lowest numbers in the data set or data sets.

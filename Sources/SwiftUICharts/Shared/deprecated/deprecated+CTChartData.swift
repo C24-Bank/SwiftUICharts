@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 extension CTChartData {
     
     /**
@@ -87,6 +88,7 @@ extension CTChartData {
     }
 }
 
+@available(iOS 14.0, *)
 extension CTChartData where Self == RangedLineChartData {
     @available(*, deprecated, message: "")
     public func infoMainValue(info: DataPoint) -> some View {

@@ -2,6 +2,7 @@ import XCTest
 import SwiftUI
 @testable import SwiftUICharts
 
+@available(iOS 14.0, *)
 final class MultiLineChartTest: XCTestCase {
     
     // MARK: - Set Up

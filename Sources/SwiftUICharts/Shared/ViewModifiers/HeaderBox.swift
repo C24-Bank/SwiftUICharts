@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 internal struct HeaderBox<T>: ViewModifier where T: CTChartData {
     
     @ObservedObject private var chartData: T
@@ -41,6 +42,7 @@ internal struct HeaderBox<T>: ViewModifier where T: CTChartData {
     }
 }
 
+@available(iOS 14.0, *)
 extension View {
     /**
      Displays the metadata about the chart.
@@ -65,6 +67,7 @@ extension View {
     }
 }
 
+@available(iOS 14.0, *)
 public struct HeaderBoxText {
     public var text: String
     /// Font of the title

@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Data set for a pie chart.
  */
+@available(iOS 14.0, *)
 public struct PieDataSet: CTSingleDataSetProtocol {
     
     public var id: UUID = UUID()
@@ -28,6 +29,8 @@ public struct PieDataSet: CTSingleDataSetProtocol {
         self.legendTitle = legendTitle
     }
     
+    @available(iOS 14.0, *)
     public typealias ID = UUID
+    @available(iOS 14.0, *)
     public typealias DataPoint = PieChartDataPoint
 }

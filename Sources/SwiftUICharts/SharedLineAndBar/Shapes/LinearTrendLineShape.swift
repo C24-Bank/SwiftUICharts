@@ -10,6 +10,7 @@ import SwiftUI
 /**
  A line across the chart to show the trend in the data.
  */
+@available(iOS 14.0, *)
 internal struct LinearTrendLineShape: Shape {
     
     private let firstValue: Double

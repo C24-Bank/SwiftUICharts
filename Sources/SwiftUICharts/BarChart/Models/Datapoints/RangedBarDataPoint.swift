@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Data for a single ranged bar chart data point.
  */
+@available(iOS 14.0, *)
 public struct RangedBarDataPoint: CTRangedBarDataPoint, DataPointDisplayable {
     
     public let id: UUID = UUID()
@@ -53,9 +54,11 @@ public struct RangedBarDataPoint: CTRangedBarDataPoint, DataPointDisplayable {
         return upperValue - lowerValue
     }
     
+    @available(iOS 14.0, *)
     public typealias ID = UUID
 }
 
+@available(iOS 14.0, *)
 extension RangedBarDataPoint {
     internal init(
         value: Double,

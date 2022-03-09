@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Control for the look of the Grid
  */
+@available(iOS 14.0, *)
 public struct GridStyle {
     
     /**

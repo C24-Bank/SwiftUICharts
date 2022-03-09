@@ -23,6 +23,7 @@ import SwiftUI
  as the modifiers are various types for stacks that wrap
  around the previous views.
  */
+@available(iOS 14.0, *)
 public struct GroupedBarChart<ChartData>: View where ChartData: GroupedBarChartData {
     
     @ObservedObject private var chartData: ChartData
@@ -58,6 +59,7 @@ public struct GroupedBarChart<ChartData>: View where ChartData: GroupedBarChartD
     }
 }
 
+@available(iOS 14.0, *)
 internal struct GroupedBarGroup<ChartData>: View where ChartData: GroupedBarChartData {
     
     @ObservedObject private var chartData: ChartData
@@ -85,6 +87,7 @@ internal struct GroupedBarGroup<ChartData>: View where ChartData: GroupedBarChar
 }
 
 // MARK: - Element
+@available(iOS 14.0, *)
 internal struct GroupBarElement<ChartData>: View where ChartData: CTBarChartDataProtocol & GetDataProtocol {
     
     @ObservedObject private var chartData: ChartData

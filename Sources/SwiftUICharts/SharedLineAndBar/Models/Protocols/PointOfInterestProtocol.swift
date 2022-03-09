@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 public protocol PointOfInterestProtocol {
     
     // MARK: Ordinate
@@ -172,6 +173,7 @@ public protocol PointOfInterestProtocol {
 //
 //
 // MARK: - Ordinate
+@available(iOS 14.0, *)
 extension CTLineBarChartDataProtocol where Self: PointOfInterestProtocol {
     public func poiMarker(value: Double, range: Double, minValue: Double) -> some Shape {
         HorizontalMarker(chartData: self, value: value, range: range, minValue: minValue)
@@ -209,6 +211,7 @@ extension CTLineBarChartDataProtocol where Self: PointOfInterestProtocol {
             )
     }
 }
+@available(iOS 14.0, *)
 extension CTLineBarChartDataProtocol where Self: PointOfInterestProtocol & isHorizontal {
     public func poiMarker(value: Double, range: Double, minValue: Double) -> some Shape {
         VerticalMarker(chartData: self, value: value, range: range, minValue: minValue)
@@ -242,6 +245,7 @@ extension CTLineBarChartDataProtocol where Self: PointOfInterestProtocol & isHor
 //
 //
 // MARK: Line Charts
+@available(iOS 14.0, *)
 extension CTLineBarChartDataProtocol where Self: CTLineChartDataProtocol & PointOfInterestProtocol {
     public func poiValueLabelPositionAxis(frame: CGRect, markerValue: Double, minValue: Double, range: Double) -> CGPoint {
         let leading: CGFloat = -((self.viewData.yAxisLabelWidth.max() ?? 0) / 2) - 4 // -4 for padding at the root view.
@@ -258,6 +262,7 @@ extension CTLineBarChartDataProtocol where Self: CTLineChartDataProtocol & Point
 }
 
 // MARK: Vertical Bar Charts
+@available(iOS 14.0, *)
 extension CTLineBarChartDataProtocol where Self: CTBarChartDataProtocol & PointOfInterestProtocol {
     public func poiValueLabelPositionAxis(frame: CGRect, markerValue: Double, minValue: Double, range: Double) -> CGPoint {
         let leading: CGFloat = -((self.viewData.yAxisLabelWidth.max() ?? 0) / 2) - 4 // -4 for padding at the root view.
@@ -273,6 +278,7 @@ extension CTLineBarChartDataProtocol where Self: CTBarChartDataProtocol & PointO
 }
 
 // MARK: Horizontal Bar Charts
+@available(iOS 14.0, *)
 extension CTLineBarChartDataProtocol where Self: CTBarChartDataProtocol & PointOfInterestProtocol,
                                            Self: isHorizontal {
     public func poiValueLabelPositionAxis(frame: CGRect, markerValue: Double, minValue: Double, range: Double) -> CGPoint {
@@ -294,6 +300,7 @@ extension CTLineBarChartDataProtocol where Self: CTBarChartDataProtocol & PointO
 
 
 // MARK: - Abscissa
+@available(iOS 14.0, *)
 extension CTLineBarChartDataProtocol where Self: PointOfInterestProtocol {
     public func poiAbscissaMarker(markerValue: Int, dataPointCount: Int) -> some Shape {
         VerticalAbscissaMarker(chartData: self, markerValue: markerValue, dataPointCount: dataPointCount)
@@ -323,6 +330,7 @@ extension CTLineBarChartDataProtocol where Self: PointOfInterestProtocol {
     }
 }
 
+@available(iOS 14.0, *)
 extension CTLineBarChartDataProtocol where Self: PointOfInterestProtocol & isHorizontal {
     public func poiAbscissaMarker(markerValue: Int, dataPointCount: Int) -> some Shape {
         HorizontalAbscissaMarker(chartData: self, markerValue: markerValue, dataPointCount: dataPointCount)
@@ -356,6 +364,7 @@ extension CTLineBarChartDataProtocol where Self: PointOfInterestProtocol & isHor
 //
 //
 // MARK: Line Charts
+@available(iOS 14.0, *)
 extension CTLineBarChartDataProtocol where Self: CTLineChartDataProtocol & PointOfInterestProtocol {
     public func poiAbscissaValueLabelPositionAxis(frame: CGRect, markerValue: Int, count: Int) -> CGPoint {
         let bottom: CGFloat = frame.height + ((self.viewData.xAxisLabelHeights.max() ?? 0) / 2) + 10  // +4 for padding at the root view
@@ -370,6 +379,7 @@ extension CTLineBarChartDataProtocol where Self: CTLineChartDataProtocol & Point
 }
 
 // MARK: Vertical Bar Charts
+@available(iOS 14.0, *)
 extension CTLineBarChartDataProtocol where Self: CTBarChartDataProtocol & PointOfInterestProtocol {
     public func poiAbscissaValueLabelPositionAxis(frame: CGRect, markerValue: Int, count: Int) -> CGPoint {
         let bottom: CGFloat = frame.height + ((self.viewData.xAxisLabelHeights.max() ?? 0) / 2) + 10  // +4 for padding at the root view
@@ -384,6 +394,7 @@ extension CTLineBarChartDataProtocol where Self: CTBarChartDataProtocol & PointO
 }
 
 // MARK: Horizontal Bar Charts
+@available(iOS 14.0, *)
 extension CTLineBarChartDataProtocol where Self: CTBarChartDataProtocol & PointOfInterestProtocol,
                                            Self: isHorizontal {
     public func poiAbscissaValueLabelPositionAxis(frame: CGRect, markerValue: Int, count: Int) -> CGPoint {

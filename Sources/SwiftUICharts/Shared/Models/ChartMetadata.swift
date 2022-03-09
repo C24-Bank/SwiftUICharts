@@ -13,6 +13,7 @@ import SwiftUI
  Contains the Title, Subtitle and colour information for them.
  */
 @available(*, deprecated, message: "Please set the data in \".headerBox\" instead.")
+@available(iOS 14.0, *)
 public struct ChartMetadata {
     /// The charts title
     @available(*, deprecated, message: "Please set the data in \".headerBox\" instead.")

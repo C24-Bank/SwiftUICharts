@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Draws a doughnut segment.
  */
+@available(iOS 14.0, *)
 internal struct DoughnutSegmentShape: InsettableShape, Identifiable {
     
     var id: UUID

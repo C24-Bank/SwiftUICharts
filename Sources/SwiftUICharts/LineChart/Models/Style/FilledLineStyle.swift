@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 public struct FilledLineStyle: CTLineStyle, Hashable {
 
     public var lineColour: ChartColour

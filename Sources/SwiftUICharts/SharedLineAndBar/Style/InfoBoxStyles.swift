@@ -8,6 +8,7 @@
 import SwiftUI
 
 // MARK: - Vertical Info Box
+@available(iOS 14.0, *)
 internal struct VerticalInfoBoxViewModifier<ChartData, S: Shape>: ViewModifier
 where ChartData: InfoData,
       ChartData.DataPoint: DataPointDisplayable {
@@ -59,6 +60,7 @@ where ChartData: InfoData,
     }
 }
 
+@available(iOS 14.0, *)
 internal struct VerticalInfoBoxView<ChartData, S: Shape>: InfoDisplayable
 where ChartData: InfoData,
       ChartData.DataPoint: DataPointDisplayable {
@@ -122,6 +124,7 @@ where ChartData: InfoData,
 }
 
 // MARK: - Horizontal Info Box
+@available(iOS 14.0, *)
 internal struct HorizontalInfoBoxViewModifier<ChartData, S: Shape>: ViewModifier
 where ChartData: InfoData,
       ChartData.DataPoint: DataPointDisplayable {
@@ -173,6 +176,7 @@ where ChartData: InfoData,
 }
 
 
+@available(iOS 14.0, *)
 internal struct HorizontalInfoBoxView<ChartData, S: Shape>: InfoDisplayable
 where ChartData: InfoData,
       ChartData.DataPoint: DataPointDisplayable {

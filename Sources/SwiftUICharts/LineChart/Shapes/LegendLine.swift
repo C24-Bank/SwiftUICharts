@@ -8,6 +8,7 @@
 import SwiftUI
 
 /// Draw line in legend view
+@available(iOS 14.0, *)
 internal struct LegendLine: Shape {
     
     private let width: CGFloat

@@ -13,6 +13,7 @@ import SwiftUI
  Controls the look of the chart as a whole, not including any styling
  specific to the data set(s),
  */
+@available(iOS 14.0, *)
 public struct BarChartStyle: CTBarChartStyle {
     
     // MARK: Deprecations

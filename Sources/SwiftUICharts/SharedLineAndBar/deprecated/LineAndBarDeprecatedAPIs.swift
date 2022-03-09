@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 extension View {
     /**
      A view that displays information from `TouchOverlay`.
@@ -37,6 +38,7 @@ extension View {
     }
 }
 
+@available(iOS 14.0, *)
 extension View {
     /**
      A view that displays information from `TouchOverlay`.
@@ -71,6 +73,7 @@ extension View {
     }
 }
 
+@available(iOS 14.0, *)
 extension View {
     /**
      Draws a line across the chart to show the the trend in the data.

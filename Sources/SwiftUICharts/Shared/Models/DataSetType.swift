@@ -14,6 +14,7 @@ import Foundation
  case multi // Multi data set - i.e MultiLineDataSet
  ```
  */
+@available(iOS 14.0, *)
 public enum DataSetType {
     case single
     case multi

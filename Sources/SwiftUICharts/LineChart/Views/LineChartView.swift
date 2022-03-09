@@ -24,6 +24,7 @@ import SwiftUI
  as the modifiers are various types for stacks that wrap
  around the previous views.
  */
+@available(iOS 14.0, *)
 public struct LineChart<ChartData>: View where ChartData: LineChartData {
     
     @ObservedObject private var chartData: ChartData
@@ -50,6 +51,7 @@ public struct LineChart<ChartData>: View where ChartData: LineChartData {
     }
 }
 
+@available(iOS 14.0, *)
 internal struct LineSubView<ChartData>: View where ChartData: LineChartData {
     @ObservedObject private var chartData: ChartData
     private let colour: ChartColour

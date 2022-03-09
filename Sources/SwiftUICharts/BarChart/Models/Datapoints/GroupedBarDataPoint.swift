@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Data for a single grouped bar chart data point.
  */
+@available(iOS 14.0, *)
 public struct GroupedBarDataPoint: CTMultiBarDataPoint, DataPointDisplayable {
     
     public let id: UUID = UUID()
@@ -39,9 +40,11 @@ public struct GroupedBarDataPoint: CTMultiBarDataPoint, DataPointDisplayable {
         self.group = group
     }
     
+    @available(iOS 14.0, *)
     public typealias ID = UUID
 }
 
+@available(iOS 14.0, *)
 extension GroupedBarDataPoint {
     internal init(
         value: Double,

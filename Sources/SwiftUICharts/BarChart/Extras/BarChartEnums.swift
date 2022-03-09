@@ -14,6 +14,7 @@ import SwiftUI
  case dataPoints // From each data point
  ```
  */
+@available(iOS 14.0, *)
 public enum ColourFrom {
     /// From BarStyle data model
     case barStyle
@@ -34,6 +35,7 @@ public enum ColourFrom {
  case topTrailing // From top and trailing edges meeting at a specified point.
  ```
  */
+@available(iOS 14.0, *)
 public enum BarMarkerType: MarkerType {
     /// No overlay markers.
     case none

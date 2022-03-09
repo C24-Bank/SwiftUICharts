@@ -8,6 +8,7 @@
 import SwiftUI
 
 @available(macOS 11.0, iOS 14, watchOS 7, tvOS 14, *)
+@available(iOS 14.0, *)
 public enum InfoBoxType<ChartData>
 where ChartData: InfoData,
       ChartData.DataPoint: DataPointDisplayable
@@ -16,6 +17,7 @@ where ChartData: InfoData,
     case horizontal(chartData: ChartData, numberFormat: NumberFormatter = .default)
 }
 
+@available(iOS 14.0, *)
 extension InfoBoxType {
     @available(macOS 11.0, iOS 14, watchOS 7, tvOS 14, *)
     internal func modifier<Content: View, S: Shape>(

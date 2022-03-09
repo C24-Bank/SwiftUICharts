@@ -14,6 +14,7 @@ import Combine
  The grouping data informs the model as to how the datapoints are linked.
  */
 @available(macOS 11.0, iOS 14, watchOS 7, tvOS 14, *)
+@available(iOS 14.0, *)
 public final class GroupedBarChartData: CTMultiBarChartDataProtocol, ChartConformance {
     
     // MARK: Properties
@@ -242,8 +243,11 @@ public final class GroupedBarChartData: CTMultiBarChartDataProtocol, ChartConfor
         infoView.isTouchCurrent = false
     }
     
+    @available(iOS 14.0, *)
     public typealias SetType = GroupedBarDataSets
+    @available(iOS 14.0, *)
     public typealias DataPoint = GroupedBarDataPoint
+    @available(iOS 14.0, *)
     public typealias CTStyle = BarChartStyle
     
     // MARK: Deprecated

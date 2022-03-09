@@ -23,6 +23,7 @@ import SwiftUI
  as the modifiers are various types for stacks that wrap
  around the previous views.
  */
+@available(iOS 14.0, *)
 public struct FilledLineChart<ChartData>: View where ChartData: FilledLineChartData {
     
     @ObservedObject private var chartData: ChartData
@@ -60,6 +61,7 @@ public struct FilledLineChart<ChartData>: View where ChartData: FilledLineChartD
 }
 
  // MARK: - Top Line
+@available(iOS 14.0, *)
 internal struct TopLineSubView<ChartData>: View where ChartData: FilledLineChartData {
     @ObservedObject private var chartData: ChartData
     private let colour: ChartColour
@@ -95,6 +97,7 @@ internal struct TopLineSubView<ChartData>: View where ChartData: FilledLineChart
 }
 
 // MARK: - Fill
+@available(iOS 14.0, *)
 internal struct FilledLineSubView<ChartData>: View where ChartData: FilledLineChartData {
     
     @ObservedObject private var chartData: ChartData

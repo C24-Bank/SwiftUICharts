@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 internal struct LineShape<DataPoint>: Shape where DataPoint: CTStandardDataPointProtocol & Ignorable {
     
     private let dataPoints: [DataPoint]
@@ -37,6 +38,7 @@ internal struct LineShape<DataPoint>: Shape where DataPoint: CTStandardDataPoint
 }
 
 // Filled line chart backing
+@available(iOS 14.0, *)
 internal struct FilledLine: Shape {
     
     private let dataPoints: [LineChartDataPoint]
@@ -67,6 +69,7 @@ internal struct FilledLine: Shape {
 }
 
 // Ranged line chart backing
+@available(iOS 14.0, *)
 internal struct RangedLineFillShape<DataPoint>: Shape where DataPoint: CTRangedLineDataPoint & Ignorable {
     
     private let dataPoints: [DataPoint]

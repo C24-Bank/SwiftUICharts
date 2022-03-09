@@ -8,6 +8,7 @@
 import SwiftUI
 
 // MARK: - Chart
+@available(iOS 14.0, *)
 public struct BarChart<ChartData>: View where ChartData: BarChartData {
     
     @ObservedObject private var chartData: ChartData
@@ -34,6 +35,7 @@ public struct BarChart<ChartData>: View where ChartData: BarChartData {
 }
 
 // MARK: - Sub View
+@available(iOS 14.0, *)
 internal struct BarChartSubView<ChartData>: View where ChartData: BarChartData {
     
     @ObservedObject private var chartData: ChartData
@@ -63,6 +65,7 @@ internal struct BarChartSubView<ChartData>: View where ChartData: BarChartData {
 }
 
 // MARK: - Element
+@available(iOS 14.0, *)
 internal struct BarElement<ChartData>: View where ChartData: CTBarChartDataProtocol & GetDataProtocol {
     
     @ObservedObject private var chartData: ChartData
@@ -128,12 +131,14 @@ internal struct BarElement<ChartData>: View where ChartData: CTBarChartDataProto
 }
 
 // MARK: - Animation
+@available(iOS 14.0, *)
 public struct BarElementAnimation {
 
     public var fill = Fill()
     public var height = Height()
     public var width = Width()
 
+    @available(iOS 14.0, *)
     public struct Fill {
         var startState: ChartColour = .colour(colour: .clear)
         var start: Animation = .linear(duration: 0.0)
@@ -143,6 +148,7 @@ public struct BarElementAnimation {
         var transitionDelay: Double = 0.0
     }
 
+    @available(iOS 14.0, *)
     public struct Height {
         var start: Animation = .linear(duration: 2.0)
         var startDelay: Double = 0.0
@@ -151,6 +157,7 @@ public struct BarElementAnimation {
         var transitionDelay: Double = 0.0
     }
 
+    @available(iOS 14.0, *)
     public struct Width {
         var transition: Animation = .linear(duration: 2.0)
         var transitionDelay: Double = 0.0

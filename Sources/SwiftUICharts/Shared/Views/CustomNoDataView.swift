@@ -10,6 +10,7 @@ import SwiftUI
 /**
  View to display text if there is not enough data to draw the chart.
  */
+@available(iOS 14.0, *)
 public struct CustomNoDataView<ChartData>: View where ChartData: CTChartData {
     
     @ObservedObject private var chartData: ChartData

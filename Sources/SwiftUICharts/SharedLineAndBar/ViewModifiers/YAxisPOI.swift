@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Configurable Point of interest
  */
+@available(iOS 14.0, *)
 internal struct YAxisPOI<T>: ViewModifier where T: CTLineBarChartDataProtocol & GetDataProtocol & PointOfInterestProtocol {
     
     @ObservedObject private var chartData: T
@@ -133,6 +134,7 @@ internal struct YAxisPOI<T>: ViewModifier where T: CTLineBarChartDataProtocol & 
 }
 
 // MARK: - Extensions
+@available(iOS 14.0, *)
 extension View {
     /**
      Horizontal line marking a custom value.

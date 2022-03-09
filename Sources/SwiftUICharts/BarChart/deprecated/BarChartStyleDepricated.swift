@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 extension BarChartStyle {
     /// Model for controlling the overall aesthetic of the Bar Chart.
     ///

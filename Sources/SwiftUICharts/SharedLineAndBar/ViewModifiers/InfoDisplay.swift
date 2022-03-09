@@ -9,9 +9,11 @@ import SwiftUI
 
 // MARK: - Protocols
 /// Required chart data protocols for displaying touched data
+@available(iOS 14.0, *)
 public typealias InfoData = CTChartData & Publishable & TouchInfoDisplayable
 
 /// Type for creating a View to display data when touched
+@available(iOS 14.0, *)
 public protocol InfoDisplayable {
     associatedtype ChartData: InfoData
     associatedtype Content: View
@@ -20,6 +22,7 @@ public protocol InfoDisplayable {
     var content: Content { get }
 }
 
+@available(iOS 14.0, *)
 internal struct InfoDisplay<ChartData, Info>: ViewModifier
 where ChartData: InfoData,
       Info: InfoDisplayable {
@@ -49,6 +52,7 @@ where ChartData: InfoData,
 }
 
 // MARK: - Extension
+@available(iOS 14.0, *)
 extension View {
     
     /// Customisable display of the data from ``touchOverlay``.
@@ -183,6 +187,7 @@ extension View {
 }
 
 // MARK: Info Display Spacer
+@available(iOS 14.0, *)
 internal struct InfoDisplaySpacer: ViewModifier {
     
     let height: CGFloat?
@@ -197,6 +202,7 @@ internal struct InfoDisplaySpacer: ViewModifier {
     
 }
 // MARK: - Extension
+@available(iOS 14.0, *)
 extension View {
     @available(macOS 11.0, iOS 14, watchOS 7, tvOS 14, *)
     public func infoDisplaySpacer(height: CGFloat?) -> some View {

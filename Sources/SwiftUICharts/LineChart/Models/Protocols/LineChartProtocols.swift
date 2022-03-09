@@ -11,6 +11,7 @@ import SwiftUI
 /**
  A protocol to extend functionality of `CTLineBarChartDataProtocol` specifically for Line Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTLineChartDataProtocol: CTLineBarChartDataProtocol {
     
     /// A type representing opaque View
@@ -38,11 +39,13 @@ public protocol CTLineChartDataProtocol: CTLineBarChartDataProtocol {
 /**
  A protocol to extend functionality of `CTLineBarChartStyle` specifically for  Line Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTLineChartStyle: CTLineBarChartStyle {}
 
 /**
  Protocol to set up the styling for individual lines.
  */
+@available(iOS 14.0, *)
 public protocol CTLineStyle {
     /// Drawing style of the line.
     var lineType: LineType { get set }
@@ -61,6 +64,7 @@ public protocol CTLineStyle {
 /**
  A protocol to extend functionality of `CTLineStyle` specifically for Ranged Line Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTRangedLineStyle: CTLineStyle {
     /// Drawing style of the range fill.
     var fillColour: ChartColour { get set }
@@ -72,6 +76,7 @@ public protocol CTRangedLineStyle: CTLineStyle {
 /**
  A protocol to extend functionality of `SingleDataSet` specifically for Line Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTLineChartDataSet: CTSingleDataSetProtocol {
     
     /// A type representing colour styling
@@ -99,6 +104,7 @@ public protocol CTLineChartDataSet: CTSingleDataSetProtocol {
 /**
  A protocol to extend functionality of `CTLineChartDataSet` specifically for Ranged Line Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTRangedLineChartDataSet: CTLineChartDataSet {
     
     /**
@@ -110,6 +116,7 @@ public protocol CTRangedLineChartDataSet: CTLineChartDataSet {
 /**
  A protocol to extend functionality of `CTMultiDataSetProtocol` specifically for Multi Line Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTMultiLineChartDataSet: CTMultiDataSetProtocol {}
 
 
@@ -118,6 +125,7 @@ public protocol CTMultiLineChartDataSet: CTMultiDataSetProtocol {}
 /**
  A protocol to extend functionality of `CTLineBarDataPointProtocol` specifically for Line and Bar Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTLineDataPointProtocol: CTLineBarDataPointProtocol {
     var pointColour: PointColour? { get set }
 }
@@ -125,16 +133,19 @@ public protocol CTLineDataPointProtocol: CTLineBarDataPointProtocol {
 /**
  A protocol to extend functionality of `CTStandardDataPointProtocol` specifically for Ranged Line Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTStandardLineDataPoint: CTLineDataPointProtocol, CTStandardDataPointProtocol, CTnotRanged {}
 
 /**
  A protocol to extend functionality of `CTStandardDataPointProtocol` specifically for Ranged Line Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTRangedLineDataPoint: CTLineDataPointProtocol, CTStandardDataPointProtocol, CTRangeDataPointProtocol, CTisRanged {}
 
 
 
 
+@available(iOS 14.0, *)
 public protocol Ignorable {
     var ignore: Bool { get set }
 }

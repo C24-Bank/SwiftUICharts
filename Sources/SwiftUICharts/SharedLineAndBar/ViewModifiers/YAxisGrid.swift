@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Adds horizontal lines along the X axis.
  */
+@available(iOS 14.0, *)
 internal struct YAxisGrid<T>: ViewModifier where T: CTLineBarChartDataProtocol {
     
     @ObservedObject private var chartData: T
@@ -37,6 +38,7 @@ internal struct YAxisGrid<T>: ViewModifier where T: CTLineBarChartDataProtocol {
     }
 }
 
+@available(iOS 14.0, *)
 extension View {
     /**
      Adds horizontal lines along the X axis.

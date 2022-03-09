@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Displays legends under the chart.
  */
+@available(iOS 14.0, *)
 internal struct Legends<T>: ViewModifier where T: CTChartData {
     
     @ObservedObject private var chartData: T
@@ -52,6 +53,7 @@ internal struct Legends<T>: ViewModifier where T: CTChartData {
     }
 }
 
+@available(iOS 14.0, *)
 extension View {
     /**
      Displays legends under the chart.

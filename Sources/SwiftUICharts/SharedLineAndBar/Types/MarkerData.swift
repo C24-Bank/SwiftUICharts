@@ -8,6 +8,7 @@
 import Foundation
 import CoreGraphics.CGGeometry
 
+@available(iOS 14.0, *)
 internal struct MarkerData: Hashable {
     internal let id: UUID = UUID()
     internal let lineMarkerData: [LineMarkerData]
@@ -27,6 +28,7 @@ internal struct MarkerData: Hashable {
     }
 }
 
+@available(iOS 14.0, *)
 struct LineMarkerData: Hashable {
     let id: UUID = UUID()
     let markerType: LineMarkerType
@@ -48,6 +50,7 @@ struct LineMarkerData: Hashable {
     }
 }
 
+@available(iOS 14.0, *)
 struct BarMarkerData: Hashable {
     let id: UUID = UUID()
     let markerType: BarMarkerType
@@ -64,6 +67,7 @@ struct BarMarkerData: Hashable {
     }
 }
 
+@available(iOS 14.0, *)
 extension LineChartDataPoint {
     init(_ datapoint: ExtraLineDataPoint) {
         self.init(value: datapoint.value,
@@ -73,6 +77,7 @@ extension LineChartDataPoint {
     }
 }
 
+@available(iOS 14.0, *)
 extension LineChartDataPoint {
     init(_ datapoint: RangedLineChartDataPoint) {
         self.init(value: datapoint.value,

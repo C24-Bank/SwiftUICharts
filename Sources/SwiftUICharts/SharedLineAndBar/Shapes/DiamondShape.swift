@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Shape used in POI Markers when displaying value in the center.
  */
+@available(iOS 14.0, *)
 public struct DiamondShape: Shape {
     public func path(in rect: CGRect) -> Path {
         var path = Path()

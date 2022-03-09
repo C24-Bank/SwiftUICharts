@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 extension Shape {
     func fill(_ color: ChartColour) -> some View {
         Group {

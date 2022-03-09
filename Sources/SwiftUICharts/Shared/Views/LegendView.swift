@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Sub view to setup and display the legends.
  */
+@available(iOS 14.0, *)
 internal struct LegendView<T>: View where T: CTChartData {
     
     @ObservedObject private var chartData: T
@@ -75,6 +76,7 @@ internal struct LegendView<T>: View where T: CTChartData {
     }
 }
 
+@available(iOS 14.0, *)
 extension LegendData {
     internal func accessibilityLegendLabel() -> String {
         switch self.chartType {

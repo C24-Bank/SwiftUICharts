@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 extension DoughnutChartStyle {
     /// Model for controlling the overall aesthetic of the chart.
     /// - Parameters:

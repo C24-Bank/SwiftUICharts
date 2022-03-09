@@ -12,6 +12,7 @@ import SwiftUI
  
  Used in Grid
  */
+@available(iOS 14.0, *)
 internal struct VerticalGridShape: Shape {
     internal func path(in rect: CGRect) -> Path {
         var path = Path()

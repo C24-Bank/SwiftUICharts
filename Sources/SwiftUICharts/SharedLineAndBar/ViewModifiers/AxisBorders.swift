@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Dividing line drawn between the X axis labels and the chart.
  */
+@available(iOS 14.0, *)
 internal struct XAxisBorder<T>: ViewModifier where T: CTLineBarChartDataProtocol {
     
     @ObservedObject private var chartData: T
@@ -50,6 +51,7 @@ internal struct XAxisBorder<T>: ViewModifier where T: CTLineBarChartDataProtocol
 /**
  Dividing line drawn between the Y axis labels and the chart.
  */
+@available(iOS 14.0, *)
 internal struct YAxisBorder<T>: ViewModifier where T: CTLineBarChartDataProtocol {
     
     @ObservedObject private var chartData: T
@@ -85,6 +87,7 @@ internal struct YAxisBorder<T>: ViewModifier where T: CTLineBarChartDataProtocol
     }
 }
 
+@available(iOS 14.0, *)
 extension View {
     internal func xAxisBorder<T: CTLineBarChartDataProtocol>(chartData: T) -> some View {
         self.modifier(XAxisBorder(chartData: chartData))

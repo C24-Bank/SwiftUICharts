@@ -11,16 +11,19 @@ import SwiftUI
 /**
  A protocol to extend functionality of `CTChartData` specifically for Pie and Doughnut Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTPieDoughnutChartDataProtocol: CTChartData {}
 
 /**
  A protocol to extend functionality of `CTPieDoughnutChartDataProtocol` specifically for Pie Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTPieChartDataProtocol: CTPieDoughnutChartDataProtocol {}
 
 /**
  A protocol to extend functionality of `CTPieDoughnutChartDataProtocol` specifically for  Doughnut Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTDoughnutChartDataProtocol: CTPieDoughnutChartDataProtocol {}
 
 
@@ -28,6 +31,7 @@ public protocol CTDoughnutChartDataProtocol: CTPieDoughnutChartDataProtocol {}
 /**
  A protocol to extend functionality of `CTStandardDataPointProtocol` specifically for Pie and Doughnut Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTPieDataPoint: CTStandardDataPointProtocol, CTnotRanged {
     
     /**
@@ -63,18 +67,21 @@ public protocol CTPieDataPoint: CTStandardDataPointProtocol, CTnotRanged {
 /**
  A protocol to extend functionality of `CTChartStyle` specifically for  Pie and Doughnut Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTPieAndDoughnutChartStyle: CTChartStyle {}
 
 
 /**
  A protocol to extend functionality of `CTPieAndDoughnutChartStyle` specifically for  Pie Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTPieChartStyle: CTPieAndDoughnutChartStyle {}
 
 
 /**
  A protocol to extend functionality of `CTPieAndDoughnutChartStyle` specifically for Doughnut Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTDoughnutChartStyle: CTPieAndDoughnutChartStyle {
     
     /**

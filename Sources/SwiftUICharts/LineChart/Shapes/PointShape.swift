@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Draws point markers over the data point locations.
  */
+@available(iOS 14.0, *)
 internal struct Point<DataPoint>: Shape where DataPoint: CTStandardDataPointProtocol & Ignorable {
     
     private let datapoint: DataPoint

@@ -12,6 +12,7 @@ import SwiftUI
  
  Contains information about each of lines within the chart.
  */
+@available(iOS 14.0, *)
 public struct MultiLineDataSet: CTMultiLineChartDataSet, DataFunctionsProtocol {
     
     public let id: UUID = UUID()

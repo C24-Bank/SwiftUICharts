@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Data set for ranged bar charts.
  */
+@available(iOS 14.0, *)
 public struct RangedBarDataSet: CTRangedBarChartDataSet, DataFunctionsProtocol {
     
     public var id: UUID = UUID()
@@ -28,6 +29,8 @@ public struct RangedBarDataSet: CTRangedBarChartDataSet, DataFunctionsProtocol {
         self.legendTitle = legendTitle
     }
     
+    @available(iOS 14.0, *)
     public typealias ID = UUID
+    @available(iOS 14.0, *)
     public typealias DataPoint = RangedBarDataPoint
 }

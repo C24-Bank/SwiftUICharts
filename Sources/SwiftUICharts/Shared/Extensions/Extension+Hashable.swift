@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 extension CGPoint: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(x)
@@ -14,6 +15,7 @@ extension CGPoint: Hashable {
     }
 }
 
+@available(iOS 14.0, *)
 extension Gradient.Stop: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(color)
@@ -21,6 +23,7 @@ extension Gradient.Stop: Hashable {
     }
 }
 
+@available(iOS 14.0, *)
 extension StrokeStyle: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(lineWidth)

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 extension View {
     /**
      View modifier to conditionally add a view modifier.
@@ -22,6 +23,7 @@ extension View {
     }
 }
 
+@available(iOS 14.0, *)
 extension View {
     /**
      View modifier to conditionally add a view modifier else add a different one.
@@ -41,6 +43,7 @@ extension View {
     }
 }
 
+@available(iOS 14.0, *)
 extension View {
     /**
      Start animation when the view appears.
@@ -59,6 +62,7 @@ extension View {
     }
 }
 
+@available(iOS 14.0, *)
 extension Double {
     /**
      Simple, neat divide.
@@ -73,6 +77,7 @@ extension Double {
         self / Double(divideBy)
     }
 }
+@available(iOS 14.0, *)
 extension CGFloat {
     /**
      Simple, neat divide.
@@ -88,6 +93,7 @@ extension CGFloat {
     }
 }
 
+@available(iOS 14.0, *)
 extension Color {
     /// Returns the relevant system background colour for the device.
     public static var systemsBackground: Color {
@@ -103,6 +109,7 @@ extension Color {
     }
 }
 
+@available(iOS 14.0, *)
 extension Collection {
     func distance(to index: Index) -> Int { distance(from: startIndex, to: index) }
 }

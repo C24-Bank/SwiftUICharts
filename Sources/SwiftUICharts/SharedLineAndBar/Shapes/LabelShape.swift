@@ -11,6 +11,7 @@ import SwiftUI
 /**
  Shape used in POI Markers when displaying value in the Y axis labels on the leading edge.
  */
+@available(iOS 14.0, *)
 public struct LeadingLabelShape: Shape {
     public func path(in rect: CGRect) -> Path {
         var path = Path()
@@ -27,6 +28,7 @@ public struct LeadingLabelShape: Shape {
 /**
  Shape used in POI Markers when displaying value in the Y axis labels on the trailing edge.
  */
+@available(iOS 14.0, *)
 public struct TrailingLabelShape: Shape {
     public func path(in rect: CGRect) -> Path {
         var path = Path()
@@ -44,6 +46,7 @@ public struct TrailingLabelShape: Shape {
 /**
  Shape used in POI Markers when displaying value in the X axis labels on the bottom edge.
  */
+@available(iOS 14.0, *)
 public struct BottomLabelShape: Shape {
     public func path(in rect: CGRect) -> Path {
         var path = Path()
@@ -60,6 +63,7 @@ public struct BottomLabelShape: Shape {
 /**
  Shape used in POI Markers when displaying value in the X axis labels on the top edge.
  */
+@available(iOS 14.0, *)
 public struct TopLabelShape: Shape {
     public func path(in rect: CGRect) -> Path {
         var path = Path()

@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Model for grouping data points together so they can be drawn in the correct groupings.
  */
+@available(iOS 14.0, *)
 public struct GroupingData: CTBarColourProtocol, Hashable, Identifiable {
     
     public let id: UUID = UUID()

@@ -11,6 +11,7 @@ import SwiftUI
  Displays the data points value with the unit.
  */
 @available(*, deprecated, message: "Please use `touchedDataPointPublisher` in chart data model.")
+@available(iOS 14.0, *)
 public struct InfoValue<T>: View where T: CTChartData {
     
     @ObservedObject private var chartData: T
@@ -30,6 +31,7 @@ public struct InfoValue<T>: View where T: CTChartData {
  Displays the data points description.
  */
 @available(*, deprecated, message: "Please use `touchedDataPointPublisher` in chart data model.")
+@available(iOS 14.0, *)
 public struct InfoDescription<T>: View where T: CTChartData {
     
     @ObservedObject private var chartData: T
@@ -49,6 +51,7 @@ public struct InfoDescription<T>: View where T: CTChartData {
  Option to display a string between the Value and the Description.
  */
 @available(*, deprecated, message: "Please use `touchedDataPointPublisher` in chart data model.")
+@available(iOS 14.0, *)
 public struct InfoExtra<T>: View where T: CTChartData {
     
     @ObservedObject private var chartData: T
@@ -68,6 +71,7 @@ public struct InfoExtra<T>: View where T: CTChartData {
     }
 }
 
+@available(iOS 14.0, *)
 extension LegendData {
     /**
      Get the legend as a view.

@@ -8,6 +8,7 @@
 import SwiftUI
 
 // MARK: - Is Greater Than
+@available(iOS 14.0, *)
 extension CTChartData where Self: CTLineChartDataProtocol,
                             SetType: CTSingleDataSetProtocol {
     public func isGreaterThanTwo() -> Bool {
@@ -15,6 +16,7 @@ extension CTChartData where Self: CTLineChartDataProtocol,
     }
 }
 
+@available(iOS 14.0, *)
 extension CTChartData where Self: CTBarChartDataProtocol,
                             SetType: CTSingleDataSetProtocol {
     public func isGreaterThanTwo() -> Bool {
@@ -22,6 +24,7 @@ extension CTChartData where Self: CTBarChartDataProtocol,
     }
 }
 
+@available(iOS 14.0, *)
 extension CTChartData where Self: CTPieDoughnutChartDataProtocol,
                             SetType: CTSingleDataSetProtocol {
     public func isGreaterThanTwo() -> Bool {
@@ -29,6 +32,7 @@ extension CTChartData where Self: CTPieDoughnutChartDataProtocol,
     }
 }
 
+@available(iOS 14.0, *)
 extension CTChartData where Self: CTLineChartDataProtocol,
                             SetType: CTMultiDataSetProtocol {
     public func isGreaterThanTwo() -> Bool {
@@ -40,6 +44,7 @@ extension CTChartData where Self: CTLineChartDataProtocol,
     }
 }
 
+@available(iOS 14.0, *)
 extension CTChartData where Self: CTBarChartDataProtocol,
                             SetType: CTMultiDataSetProtocol {
     public func isGreaterThanTwo() -> Bool {
@@ -51,6 +56,7 @@ extension CTChartData where Self: CTBarChartDataProtocol,
     }
 }
 
+@available(iOS 14.0, *)
 extension CTLineBarChartDataProtocol {
     public func setBoxLocation(touchLocation: CGFloat, boxFrame: CGRect, chartSize: CGRect) -> CGFloat {
         var returnPoint: CGFloat = .zero
@@ -64,6 +70,7 @@ extension CTLineBarChartDataProtocol {
         return returnPoint + (viewData.yAxisLabelWidth.max() ?? 0) + viewData.yAxisTitleWidth + (viewData.hasYAxisLabels ? 4 : 0) // +4 For Padding
     }
 }
+@available(iOS 14.0, *)
 extension CTLineBarChartDataProtocol where Self: isHorizontal {
     public func setBoxLocation(touchLocation: CGFloat, boxFrame: CGRect, chartSize: CGRect) -> CGFloat {
         var returnPoint: CGFloat = .zero
@@ -78,6 +85,7 @@ extension CTLineBarChartDataProtocol where Self: isHorizontal {
     }
 }
 
+@available(iOS 14.0, *)
 extension CTPieDoughnutChartDataProtocol {
     public func setBoxLocation(touchLocation: CGFloat, boxFrame: CGRect, chartSize: CGRect) -> CGFloat {
         touchLocation
@@ -85,6 +93,7 @@ extension CTPieDoughnutChartDataProtocol {
 }
 
 // MARK: - Data Set
+@available(iOS 14.0, *)
 extension CTSingleDataSetProtocol where Self.DataPoint: CTStandardDataPointProtocol & CTnotRanged {
     public func maxValue() -> Double {
         self.dataPoints
@@ -103,6 +112,7 @@ extension CTSingleDataSetProtocol where Self.DataPoint: CTStandardDataPointProto
             .divide(by: Double(self.dataPoints.count))
     }
 }
+@available(iOS 14.0, *)
 extension CTSingleDataSetProtocol where Self.DataPoint: CTRangeDataPointProtocol & CTisRanged {
     public func maxValue() -> Double {
         self.dataPoints
@@ -121,6 +131,7 @@ extension CTSingleDataSetProtocol where Self.DataPoint: CTRangeDataPointProtocol
     }
 }
 
+@available(iOS 14.0, *)
 extension CTMultiDataSetProtocol where Self.DataSet.DataPoint: CTStandardDataPointProtocol {
     public func maxValue() -> Double {
         self.dataSets.compactMap {
@@ -152,6 +163,7 @@ extension CTMultiDataSetProtocol where Self.DataSet.DataPoint: CTStandardDataPoi
     }
 }
 
+@available(iOS 14.0, *)
 extension CTMultiDataSetProtocol where Self == StackedBarDataSets {
     /**
      Returns the highest sum value in the data sets
@@ -173,6 +185,7 @@ extension CTMultiDataSetProtocol where Self == StackedBarDataSets {
             .max() ?? 0
     }
 }
+@available(iOS 14.0, *)
 extension CTMultiBarChartDataSet where Self == StackedBarDataSet {
     /**
      Returns the highest sum value in the data set.
@@ -193,6 +206,7 @@ extension CTMultiBarChartDataSet where Self == StackedBarDataSet {
 
 
 // MARK: - Data Point
+@available(iOS 14.0, *)
 extension CTDataPointBaseProtocol  {
     /// Returns information about the data point for use in accessibility tags.
     func getCellAccessibilityValue(specifier: String) -> Text {
@@ -200,6 +214,7 @@ extension CTDataPointBaseProtocol  {
     }
 }
 
+@available(iOS 14.0, *)
 extension CTDataPointBaseProtocol {
     /// Unwraps description
     public var wrappedDescription: String {

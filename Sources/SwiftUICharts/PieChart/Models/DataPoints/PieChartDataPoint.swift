@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Data for a single segement of a pie chart.
  */
+@available(iOS 14.0, *)
 public struct PieChartDataPoint: CTPieDataPoint, DataPointDisplayable {
     
     public var id: UUID = UUID()
@@ -45,6 +46,7 @@ public struct PieChartDataPoint: CTPieDataPoint, DataPointDisplayable {
     }
 }
 
+@available(iOS 14.0, *)
 extension PieChartDataPoint {
     // Remove legend tag from compare
     public static func == (left: PieChartDataPoint, right: PieChartDataPoint) -> Bool {

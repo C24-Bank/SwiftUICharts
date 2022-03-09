@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Automatically generated labels for the Y axis.
  */
+@available(iOS 14.0, *)
 internal struct YAxisLabels<T>: ViewModifier where T: CTLineBarChartDataProtocol {
     
     @ObservedObject private var chartData: T
@@ -50,6 +51,7 @@ internal struct YAxisLabels<T>: ViewModifier where T: CTLineBarChartDataProtocol
     }
 }
 
+@available(iOS 14.0, *)
 extension View {
     /**
      Automatically generated labels for the Y axis.

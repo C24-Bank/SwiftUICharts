@@ -8,6 +8,7 @@
 import SwiftUI
 
 @available(macOS 11.0, iOS 14, watchOS 7, tvOS 14, *)
+@available(iOS 14.0, *)
 public struct InfoBoxStyle {
     public var valueFont: Font
     public var valueColour: Color
@@ -36,6 +37,7 @@ public struct InfoBoxStyle {
     }
 }
 
+@available(iOS 14.0, *)
 extension InfoBoxStyle {
     public static let bordered = InfoBoxStyle(valueFont: .title3,
                                               valueColour: Color.primary,

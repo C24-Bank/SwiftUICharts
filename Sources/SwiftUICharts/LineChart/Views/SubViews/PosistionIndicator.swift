@@ -10,6 +10,7 @@ import SwiftUI
 /**
  A dot that follows the line on touch events.
  */
+@available(iOS 14.0, *)
 internal struct PosistionIndicator: View {
     
     private let fillColour: Color
@@ -40,6 +41,7 @@ internal struct PosistionIndicator: View {
 /**
  Styling of the dot that follows the line on touch events.
  */
+@available(iOS 14.0, *)
 public struct DotStyle {
     
     let size: CGFloat

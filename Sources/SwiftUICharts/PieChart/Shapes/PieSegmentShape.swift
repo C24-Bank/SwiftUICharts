@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Draws a pie segment.
  */
+@available(iOS 14.0, *)
 internal struct PieSegmentShape: Shape, Identifiable {
     
     var id: UUID

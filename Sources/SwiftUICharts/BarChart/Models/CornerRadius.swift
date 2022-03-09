@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Corner radius of the bar shape.
  */
+@available(iOS 14.0, *)
 public struct CornerRadius: Hashable {
     
     public let topLeading: CGFloat

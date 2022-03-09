@@ -8,6 +8,7 @@
 import SwiftUI
 
 
+@available(iOS 14.0, *)
 internal struct MarkerView {
     
     internal static func bar(
@@ -139,6 +140,7 @@ internal struct MarkerView {
 /**
  Sub view for laying out and styling the indicator dot.
  */
+@available(iOS 14.0, *)
 internal struct IndicatorSwitch: View {
     
     private let indicator: Dot

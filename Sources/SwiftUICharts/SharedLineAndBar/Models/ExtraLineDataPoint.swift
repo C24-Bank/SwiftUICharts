@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Data point for Extra line View Modifier.
  */
+@available(iOS 14.0, *)
 public struct ExtraLineDataPoint: CTStandardLineDataPoint, Hashable, Identifiable, Ignorable {
 
     public let id: UUID = UUID()

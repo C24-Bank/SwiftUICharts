@@ -11,6 +11,7 @@ import SwiftUI
 /**
  Finds the nearest data point and displays the relevent information.
  */
+@available(iOS 14.0, *)
 internal struct TouchOverlay<ChartData>: ViewModifier where ChartData: CTChartData & Touchable {
     
     @ObservedObject private var chartData: ChartData
@@ -57,6 +58,7 @@ internal struct TouchOverlay<ChartData>: ViewModifier where ChartData: CTChartDa
 }
 #endif
 
+@available(iOS 14.0, *)
 extension View {
     #if !os(tvOS)
     /**

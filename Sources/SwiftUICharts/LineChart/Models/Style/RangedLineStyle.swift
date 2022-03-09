@@ -9,6 +9,7 @@ import SwiftUI
 /**
  Model for controlling the aesthetic of the ranged line chart.
  */
+@available(iOS 14.0, *)
 public struct RangedLineStyle: CTRangedLineStyle, Hashable {
     
     public var lineColour: ChartColour

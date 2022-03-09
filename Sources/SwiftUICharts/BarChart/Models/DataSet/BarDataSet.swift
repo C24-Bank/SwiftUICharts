@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Data set for a bar chart.
  */
+@available(iOS 14.0, *)
 public struct BarDataSet: CTStandardBarChartDataSet, DataFunctionsProtocol {
     
     public let id: UUID = UUID()
@@ -28,6 +29,8 @@ public struct BarDataSet: CTStandardBarChartDataSet, DataFunctionsProtocol {
         self.legendTitle = legendTitle
     }
     
+    @available(iOS 14.0, *)
     public typealias ID = UUID
+    @available(iOS 14.0, *)
     public typealias DataPoint = BarChartDataPoint
 }

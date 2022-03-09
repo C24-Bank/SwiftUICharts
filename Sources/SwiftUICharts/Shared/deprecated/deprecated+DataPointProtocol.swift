@@ -7,6 +7,7 @@
 
 import Foundation
 
+@available(iOS 14.0, *)
 extension CTStandardDataPointProtocol where Self: CTBarDataPointBaseProtocol {
     /// Data point's value as a string
     @available(*, deprecated, message: "")
@@ -14,6 +15,7 @@ extension CTStandardDataPointProtocol where Self: CTBarDataPointBaseProtocol {
             return String(format: specifier, self.value)
     }
 }
+@available(iOS 14.0, *)
 extension CTStandardDataPointProtocol where Self: CTLineDataPointProtocol & Ignorable {
     /// Data point's value as a string
     @available(*, deprecated, message: "")
@@ -25,6 +27,7 @@ extension CTStandardDataPointProtocol where Self: CTLineDataPointProtocol & Igno
         }
     }
 }
+@available(iOS 14.0, *)
 extension CTStandardDataPointProtocol where Self: CTPieDataPoint {
     /// Data point's value as a string
     @available(*, deprecated, message: "")
@@ -33,6 +36,7 @@ extension CTStandardDataPointProtocol where Self: CTPieDataPoint {
     }
 }
 
+@available(iOS 14.0, *)
 extension CTRangeDataPointProtocol where Self == RangedBarDataPoint {
     /// Data point's value as a string
     @available(*, deprecated, message: "")
@@ -45,6 +49,7 @@ extension CTRangeDataPointProtocol where Self == RangedBarDataPoint {
     }
 }
 
+@available(iOS 14.0, *)
 extension CTRangedLineDataPoint where Self == RangedLineChartDataPoint {
     /// Data point's value as a string
     @available(*, deprecated, message: "")

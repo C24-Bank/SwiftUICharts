@@ -11,6 +11,7 @@ import SwiftUI
 /**
  A protocol to extend functionality of `CTLineBarChartDataProtocol` specifically for Bar Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTBarChartDataProtocol: CTLineBarChartDataProtocol {
     
     associatedtype BarStyle: CTBarStyle
@@ -26,6 +27,7 @@ public protocol CTBarChartDataProtocol: CTLineBarChartDataProtocol {
 /**
  A protocol to extend functionality of `CTBarChartDataProtocol` specifically for Multi Part Bar Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTMultiBarChartDataProtocol: CTBarChartDataProtocol {
     
     /**
@@ -37,21 +39,26 @@ public protocol CTMultiBarChartDataProtocol: CTBarChartDataProtocol {
 /**
  A protocol to extend functionality of `CTBarChartDataProtocol` specifically for Multi Part Bar Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTRangedBarChartDataProtocol: CTBarChartDataProtocol {}
 
 /**
  A protocol to extend functionality of `CTBarChartDataProtocol` specifically for Horizontal Bar Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTHorizontalBarChartDataProtocol: CTBarChartDataProtocol, isHorizontal {}
 
+@available(iOS 14.0, *)
 public protocol isHorizontal {}
 
 // MARK: - Style
 /**
  A protocol to extend functionality of `CTLineBarChartStyle` specifically for  Bar Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTBarChartStyle: CTLineBarChartStyle {}
 
+@available(iOS 14.0, *)
 public protocol CTBarStyle: CTBarColourProtocol, Hashable {
     /// How much of the available width to use. 0...1
     var barWidth: CGFloat { get set }
@@ -75,6 +82,7 @@ public protocol CTBarStyle: CTBarColourProtocol, Hashable {
 /**
  A protocol to extend functionality of `CTSingleDataSetProtocol` specifically for Standard Bar Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTStandardBarChartDataSet: CTSingleDataSetProtocol {
     /**
      Label to display in the legend.
@@ -85,6 +93,7 @@ public protocol CTStandardBarChartDataSet: CTSingleDataSetProtocol {
 /**
  A protocol to extend functionality of `CTSingleDataSetProtocol` specifically for Multi Part Bar Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTMultiBarChartDataSet: CTSingleDataSetProtocol  {
     /**
      Title of the data set.
@@ -97,6 +106,7 @@ public protocol CTMultiBarChartDataSet: CTSingleDataSetProtocol  {
 /**
  A protocol to extend functionality of `CTSingleDataSetProtocol` specifically for Ranged Bar Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTRangedBarChartDataSet: CTStandardBarChartDataSet  {}
 
 
@@ -109,11 +119,13 @@ public protocol CTRangedBarChartDataSet: CTStandardBarChartDataSet  {}
  
  This is base to specify conformance for generics.
  */
+@available(iOS 14.0, *)
 public protocol CTBarDataPointBaseProtocol: CTLineBarDataPointProtocol {}
 
 /**
  A protocol to a standard colour scheme for bar charts.
  */
+@available(iOS 14.0, *)
 public protocol CTBarColourProtocol {
     /// Drawing style of the range fill.
     var colour: ChartColour { get set }
@@ -122,11 +134,13 @@ public protocol CTBarColourProtocol {
 /**
  A protocol to extend functionality of `CTBarDataPointBaseProtocol` specifically for standard Bar Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTStandardBarDataPoint: CTBarDataPointBaseProtocol, CTStandardDataPointProtocol, CTBarColourProtocol, CTnotRanged {}
 
 /**
  A protocol to extend functionality of `CTBarDataPointBaseProtocol` specifically for standard Bar Charts.
  */
+@available(iOS 14.0, *)
 public protocol CTRangedBarDataPoint: CTBarDataPointBaseProtocol, CTRangeDataPointProtocol, CTBarColourProtocol, CTisRanged {
     var value: Double { get }
 }
@@ -135,6 +149,7 @@ public protocol CTRangedBarDataPoint: CTBarDataPointBaseProtocol, CTRangeDataPoi
  A protocol to extend functionality of `CTBarDataPointBaseProtocol` specifically for multi part Bar Charts.
  i.e: Grouped or Stacked
  */
+@available(iOS 14.0, *)
 public protocol CTMultiBarDataPoint: CTBarDataPointBaseProtocol, CTStandardDataPointProtocol, CTnotRanged {
     
     /**

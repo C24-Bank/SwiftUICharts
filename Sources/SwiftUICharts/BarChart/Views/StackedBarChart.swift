@@ -8,6 +8,7 @@
 import SwiftUI
 
 // MARK: - Chart
+@available(iOS 14.0, *)
 public struct StackedBarChart<ChartData>: View where ChartData: StackedBarChartData {
     
     @ObservedObject private var chartData: ChartData
@@ -33,6 +34,7 @@ public struct StackedBarChart<ChartData>: View where ChartData: StackedBarChartD
 }
 
 // MARK: Sub View
+@available(iOS 14.0, *)
 internal struct StackSubView<ChartData>: View where ChartData: StackedBarChartData {
     
     @ObservedObject private var chartData: ChartData
@@ -90,6 +92,7 @@ internal struct StackSubView<ChartData>: View where ChartData: StackedBarChartDa
 }
 
 // MARK: - Single Bar
+@available(iOS 14.0, *)
 internal struct StackSingleBarView: View {
     
     private let dataSet: StackedBarDataSet
@@ -139,6 +142,7 @@ internal struct StackSingleBarView: View {
 }
 
 // MARK: Stacked Element
+@available(iOS 14.0, *)
 internal struct StackBarElement: View {
     
     private let fill: ChartColour

@@ -14,6 +14,7 @@ import Combine
  This model contains the data and styling information for a doughnut chart.
  */
 @available(macOS 11.0, iOS 14, watchOS 7, tvOS 14, *)
+@available(iOS 14.0, *)
 public final class DoughnutChartData: CTDoughnutChartDataProtocol, Publishable, Touchable, TouchInfoDisplayable {
     
     // MARK: Properties
@@ -92,8 +93,11 @@ public final class DoughnutChartData: CTDoughnutChartDataProtocol, Publishable, 
         infoView.isTouchCurrent = false
     }
     
+    @available(iOS 14.0, *)
     public typealias SetType = PieDataSet
+    @available(iOS 14.0, *)
     public typealias DataPoint = PieChartDataPoint
+    @available(iOS 14.0, *)
     public typealias CTStyle = DoughnutChartStyle
     
     // MARK: Deprecated

@@ -8,6 +8,7 @@
 import SwiftUI
 
 /// Generic line, drawn horizontally across the chart.
+@available(iOS 14.0, *)
 internal struct HorizontalMarker<ChartData>: Shape where ChartData: CTLineBarChartDataProtocol & PointOfInterestProtocol {
     
     @ObservedObject private var chartData: ChartData
@@ -41,6 +42,7 @@ internal struct HorizontalMarker<ChartData>: Shape where ChartData: CTLineBarCha
 }
 
 /// Generic line, drawn vertically across the chart.
+@available(iOS 14.0, *)
 internal struct VerticalMarker<ChartData>: Shape where ChartData: CTLineBarChartDataProtocol & PointOfInterestProtocol {
     
     @ObservedObject private var chartData: ChartData
@@ -75,6 +77,7 @@ internal struct VerticalMarker<ChartData>: Shape where ChartData: CTLineBarChart
 
 
 /// Generic line, drawn vertically across the chart.
+@available(iOS 14.0, *)
 internal struct VerticalAbscissaMarker<ChartData>: Shape where ChartData: CTLineBarChartDataProtocol & PointOfInterestProtocol {
     
     @ObservedObject private var chartData: ChartData
@@ -104,6 +107,7 @@ internal struct VerticalAbscissaMarker<ChartData>: Shape where ChartData: CTLine
 }
 
 /// Generic line, drawn horizontally across the chart.
+@available(iOS 14.0, *)
 internal struct HorizontalAbscissaMarker<ChartData>: Shape where ChartData: CTLineBarChartDataProtocol & PointOfInterestProtocol {
     
     @ObservedObject private var chartData: ChartData

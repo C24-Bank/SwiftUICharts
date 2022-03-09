@@ -25,6 +25,7 @@ import SwiftUI
  as the modifiers are various types for stacks that wrap
  around the previous views.
  */
+@available(iOS 14.0, *)
 public struct RangedLineChart<ChartData>: View where ChartData: RangedLineChartData {
     
     @ObservedObject private var chartData: ChartData
@@ -61,6 +62,7 @@ public struct RangedLineChart<ChartData>: View where ChartData: RangedLineChartD
 }
 
 // MARK: Box Sub View
+@available(iOS 14.0, *)
 internal struct RangedBoxSubView<ChartData>: View where ChartData: RangedLineChartData {
     
     @ObservedObject private var chartData: ChartData
@@ -97,6 +99,7 @@ internal struct RangedBoxSubView<ChartData>: View where ChartData: RangedLineCha
 }
 
 // MARK: Line Sub View
+@available(iOS 14.0, *)
 internal struct RangedLineSubView<ChartData>: View where ChartData: RangedLineChartData {
     @ObservedObject private var chartData: ChartData
     private let dataSet: RangedLineDataSet

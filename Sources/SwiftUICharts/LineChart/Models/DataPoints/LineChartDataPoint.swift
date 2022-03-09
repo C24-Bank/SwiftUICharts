@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Data for a single data point.
  */
+@available(iOS 14.0, *)
 public struct LineChartDataPoint: CTStandardLineDataPoint, Ignorable, DataPointDisplayable {
     
     public let id: UUID = UUID()

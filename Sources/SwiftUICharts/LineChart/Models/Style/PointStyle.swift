@@ -12,6 +12,7 @@ import SwiftUI
  
  Point markers are placed on top of the line, marking where the data points are.
  */
+@available(iOS 14.0, *)
 public struct PointStyle: Hashable {
     
     /// Overall size of the mark
@@ -57,6 +58,7 @@ public struct PointStyle: Hashable {
     }
 }
 
+@available(iOS 14.0, *)
 public struct PointColour: Hashable {
     public let border: Color
     public let fill: Color

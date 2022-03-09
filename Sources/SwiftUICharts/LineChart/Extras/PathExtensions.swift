@@ -8,6 +8,7 @@
 import SwiftUI
 
 // MARK: Standard
+@available(iOS 14.0, *)
 extension Path {
     internal static func straightLine<DataPoint>(
         rect: CGRect,
@@ -72,6 +73,7 @@ extension Path {
 }
 
 // MARK: - Filled
+@available(iOS 14.0, *)
 extension Path {
     internal static func filledStraightLine<DataPoint>(
         rect: CGRect,
@@ -150,6 +152,7 @@ extension Path {
 }
 
 // MARK: - Box
+@available(iOS 14.0, *)
 extension Path {
     internal static func straightLineBox<DataPoint>(
         rect: CGRect,
@@ -247,6 +250,7 @@ extension Path {
 }
 
 // MARK: - Bar Spacing
+@available(iOS 14.0, *)
 extension Path {
     internal static func straightLineBarSpacing<DataPoint>(
         rect: CGRect,

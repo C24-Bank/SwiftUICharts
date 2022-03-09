@@ -10,6 +10,7 @@ import SwiftUI
 /**
  Model for controlling the aesthetic of the bars.
  */
+@available(iOS 14.0, *)
 public struct BarStyle: CTBarStyle {
     
     public var barWidth: CGFloat
