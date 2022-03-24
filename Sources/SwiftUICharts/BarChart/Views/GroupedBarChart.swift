@@ -137,7 +137,7 @@ internal struct GroupBarElement<ChartData>: View where ChartData: CTBarChartData
                 .offset(heightAnimation ?
                         BarLayout.barOffset(section.size, chartData.barStyle.barWidth, dataPoint.value, chartData.maxValue) :
                         BarLayout.barOffset(section.size, chartData.barStyle.barWidth, 0, 0))
-                .animation((heightAnimation ? nil : animations.heightAnimation(index)),
+                .animation(animations.heightAnimation(index),
                            value: dataPoint.value)
                 .animateOnAppear(using: animations.heightAnimationStart(index)) {
                     self.heightAnimation = true
