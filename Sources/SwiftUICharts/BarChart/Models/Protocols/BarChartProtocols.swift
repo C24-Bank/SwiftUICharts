@@ -20,6 +20,8 @@ public protocol CTBarChartDataProtocol: CTLineBarChartDataProtocol {
      Overall styling for the bars
      */
     var barStyle: BarStyle { get set }
+    
+    var animations: BarElementAnimation { get }
 }
 
 

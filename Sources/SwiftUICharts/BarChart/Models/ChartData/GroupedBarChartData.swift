@@ -38,6 +38,7 @@ public final class GroupedBarChartData: CTMultiBarChartDataProtocol, ChartConfor
     @Published public var extraLineData: ExtraLineData!
   
     @Published public var shouldAnimate: Bool
+    @Published public var animations: BarElementAnimation
     
     @Published public var groupSpacing: CGFloat = 0
     @Published public var groups: [GroupingData]
@@ -73,6 +74,7 @@ public final class GroupedBarChartData: CTMultiBarChartDataProtocol, ChartConfor
         barStyle: BarStyle = BarStyle(),
         chartStyle: BarChartStyle = BarChartStyle(),
         shouldAnimate: Bool = true,
+        animations: BarElementAnimation? = nil,
         noDataText: Text = Text("No Data")
     ) {
         self.dataSets = dataSets
@@ -82,6 +84,7 @@ public final class GroupedBarChartData: CTMultiBarChartDataProtocol, ChartConfor
         self.barStyle = barStyle
         self.chartStyle = chartStyle
         self.shouldAnimate = shouldAnimate
+        self.animations = animations ?? BarElementAnimation()
         self.noDataText = noDataText
         
         self.setupLegends()
@@ -281,6 +284,7 @@ public final class GroupedBarChartData: CTMultiBarChartDataProtocol, ChartConfor
         self.barStyle = barStyle
         self.chartStyle = chartStyle
         self.shouldAnimate = true
+        self.animations = BarElementAnimation()
         self.noDataText = noDataText
         
         self.setupLegends()

@@ -132,14 +132,14 @@ internal struct BarElement<ChartData>: View where ChartData: CTBarChartDataProto
 
 // MARK: - Animation
 @available(iOS 14.0, *)
-public struct BarElementAnimation {
+public struct BarElementAnimation: Equatable {
 
     public var fill = Fill()
     public var height = Height()
     public var width = Width()
 
     @available(iOS 14.0, *)
-    public struct Fill {
+    public struct Fill: Equatable {
         var startState: ChartColour = .colour(colour: .clear)
         var start: Animation = .linear(duration: 0.0)
         var startDelay: Double = 0.0
@@ -149,7 +149,7 @@ public struct BarElementAnimation {
     }
 
     @available(iOS 14.0, *)
-    public struct Height {
+    public struct Height: Equatable {
         var start: Animation = .linear(duration: 2.0)
         var startDelay: Double = 0.0
 
@@ -158,7 +158,7 @@ public struct BarElementAnimation {
     }
 
     @available(iOS 14.0, *)
-    public struct Width {
+    public struct Width: Equatable {
         var transition: Animation = .linear(duration: 2.0)
         var transitionDelay: Double = 0.0
     }

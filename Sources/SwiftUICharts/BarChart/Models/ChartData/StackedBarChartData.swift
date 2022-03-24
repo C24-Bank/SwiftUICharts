@@ -38,6 +38,7 @@ public final class StackedBarChartData: CTMultiBarChartDataProtocol, ChartConfor
     @Published public var extraLineData: ExtraLineData!
     
     @Published public var shouldAnimate: Bool
+    @Published public private(set) var animations: BarElementAnimation = BarElementAnimation()
     
     @Published public var groups: [GroupingData]
     

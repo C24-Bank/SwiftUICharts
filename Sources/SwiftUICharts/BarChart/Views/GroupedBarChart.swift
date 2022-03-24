@@ -93,7 +93,7 @@ internal struct GroupBarElement<ChartData>: View where ChartData: CTBarChartData
     @ObservedObject private var chartData: ChartData
     private let dataPoint: GroupedBarDataPoint
     private let fill: ChartColour
-    private let animations = BarElementAnimation()
+    private let animations: BarElementAnimation
     private let index: Double
     
     @State private var fillAnimation: Bool = false
@@ -109,6 +109,7 @@ internal struct GroupBarElement<ChartData>: View where ChartData: CTBarChartData
         self.dataPoint = dataPoint
         self.fill = fill
         self.index = Double(index)
+        self.animations = chartData.animations
         
         let shouldAnimate = chartData.shouldAnimate ? false : true
         self._heightAnimation = State<Bool>(initialValue: shouldAnimate)
