@@ -140,27 +140,27 @@ public struct BarElementAnimation: Equatable {
 
     @available(iOS 14.0, *)
     public struct Fill: Equatable {
-        var startState: ChartColour = .colour(colour: .clear)
-        var start: Animation = .linear(duration: 0.0)
-        var startDelay: Double = 0.0
+        public var startState: ChartColour = .colour(colour: .clear)
+        public var start: Animation = .linear(duration: 0.0)
+        public var startDelay: Double = 0.0
 
-        var transition: Animation = .linear(duration: 2.0)
-        var transitionDelay: Double = 0.0
+        public var transition: Animation = .linear(duration: 2.0)
+        public var transitionDelay: Double = 0.0
     }
 
     @available(iOS 14.0, *)
     public struct Height: Equatable {
-        var start: Animation = .linear(duration: 2.0)
-        var startDelay: Double = 0.0
+        public var start: Animation = .linear(duration: 2.0)
+        public var startDelay: Double = 0.0
 
-        var transition: Animation = .linear(duration: 2.0)
-        var transitionDelay: Double = 0.0
+        public var transition: Animation = .linear(duration: 2.0)
+        public var transitionDelay: Double = 0.0
     }
 
     @available(iOS 14.0, *)
     public struct Width: Equatable {
-        var transition: Animation = .linear(duration: 2.0)
-        var transitionDelay: Double = 0.0
+        public var transition: Animation = .linear(duration: 2.0)
+        public var transitionDelay: Double = 0.0
     }
     
     internal func fillAnimationStart(_ index: Double) -> Animation {
