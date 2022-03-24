@@ -134,9 +134,15 @@ internal struct BarElement<ChartData>: View where ChartData: CTBarChartDataProto
 @available(iOS 14.0, *)
 public struct BarElementAnimation: Equatable {
 
-    public var fill = Fill()
-    public var height = Height()
-    public var width = Width()
+    public var fill: Fill
+    public var height: Height
+    public var width: Width
+    
+    public init() {
+        self.fill = Fill()
+        self.height = Height()
+        self.width = Width()
+    }
 
     @available(iOS 14.0, *)
     public struct Fill: Equatable {
