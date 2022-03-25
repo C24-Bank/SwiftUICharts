@@ -15,8 +15,13 @@ internal struct XAxisLabels<T>: ViewModifier where T: CTLineBarChartDataProtocol
     
     @ObservedObject private var chartData: T
     
+    private let leadingPadding: CGFloat
+    private let trailingPadding: CGFloat
+    
     internal init(chartData: T, leadingPadding: CGFloat, trailingPadding: CGFloat) {
         self.chartData = chartData
+        self.leadingPadding = leadingPadding
+        self.trailingPadding = trailingPadding
         self.chartData.viewData.hasXAxisLabels = true
     }
     
@@ -76,6 +81,6 @@ extension View {
      - Returns: A  new view containing the chart with labels marking the x axis.
      */
     public func xAxisLabels<T: CTLineBarChartDataProtocol>(chartData: T, leadingPadding: CGFloat = 0, trailingPadding: CGFloat = 0) -> some View {
-        self.modifier(XAxisLabels(chartData: chartData))
+        self.modifier(XAxisLabels(chartData: chartData, leadingPadding: leadingPadding, trailingPadding: trailingPadding))
     }
 }
