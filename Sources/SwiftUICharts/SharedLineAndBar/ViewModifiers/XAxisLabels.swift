@@ -15,7 +15,7 @@ internal struct XAxisLabels<T>: ViewModifier where T: CTLineBarChartDataProtocol
     
     @ObservedObject private var chartData: T
     
-    internal init(chartData: T) {
+    internal init(chartData: T, leadingPadding: CGFloat, trailingPadding: CGFloat) {
         self.chartData = chartData
         self.chartData.viewData.hasXAxisLabels = true
     }
@@ -27,15 +27,15 @@ internal struct XAxisLabels<T>: ViewModifier where T: CTLineBarChartDataProtocol
                 if chartData.isGreaterThanTwo() {
                     VStack {
                         content
-                        chartData.getXAxisLabels().padding(.top, 2)
-                        chartData.getXAxisTitle()
+                        chartData.getXAxisLabels().padding(.top, 2).padding(.leading, leadingPadding).padding(.trailing, trailingPadding)
+                        chartData.getXAxisTitle().padding(.leading, leadingPadding).padding(.trailing, trailingPadding)
                     }
                 } else { content }
             case .top:
                 if chartData.isGreaterThanTwo() {
                     VStack {
-                        chartData.getXAxisTitle()
-                        chartData.getXAxisLabels().padding(.bottom, 2)
+                        chartData.getXAxisTitle().padding(.leading, leadingPadding).padding(.trailing, trailingPadding)
+                        chartData.getXAxisLabels().padding(.bottom, 2).padding(.leading, leadingPadding).padding(.trailing, trailingPadding)
                         content
                     }
                 } else { content }
@@ -75,7 +75,7 @@ extension View {
      - Parameter chartData: Chart data model.
      - Returns: A  new view containing the chart with labels marking the x axis.
      */
-    public func xAxisLabels<T: CTLineBarChartDataProtocol>(chartData: T) -> some View {
+    public func xAxisLabels<T: CTLineBarChartDataProtocol>(chartData: T, leadingPadding: CGFloat = 0, trailingPadding: CGFloat = 0) -> some View {
         self.modifier(XAxisLabels(chartData: chartData))
     }
 }
