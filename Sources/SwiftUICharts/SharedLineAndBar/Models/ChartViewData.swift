@@ -19,7 +19,7 @@ public struct ChartViewData {
      This does not include any view
      modifiers such as axis labels.
      */
-    var chartSize: CGRect = .zero
+    public internal(set) var chartSize: CGRect = .zero
     
     // MARK: X Axis
     /**
