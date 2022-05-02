@@ -15,8 +15,11 @@ internal struct XAxisLabels<T>: ViewModifier where T: CTLineBarChartDataProtocol
     
     @ObservedObject private var chartData: T
     
-    internal init(chartData: T) {
+    private let leadingTrailingPadding: CGFloat
+    
+    internal init(chartData: T, leadingTrailingPadding: CGFloat) {
         self.chartData = chartData
+        self.leadingTrailingPadding = leadingTrailingPadding
         self.chartData.viewData.hasXAxisLabels = true
     }
     
@@ -27,7 +30,7 @@ internal struct XAxisLabels<T>: ViewModifier where T: CTLineBarChartDataProtocol
                 if chartData.isGreaterThanTwo() {
                     VStack {
                         content
-                        chartData.getXAxisLabels().padding(.top, 2)
+                        chartData.getXAxisLabels().padding(.top, 2).padding([ .leading, .trailing ], leadingTrailingPadding)
                         chartData.getXAxisTitle()
                     }
                 } else { content }
@@ -35,7 +38,7 @@ internal struct XAxisLabels<T>: ViewModifier where T: CTLineBarChartDataProtocol
                 if chartData.isGreaterThanTwo() {
                     VStack {
                         chartData.getXAxisTitle()
-                        chartData.getXAxisLabels().padding(.bottom, 2)
+                        chartData.getXAxisLabels().padding(.bottom, 2).padding([ .leading, .trailing ], leadingTrailingPadding)
                         content
                     }
                 } else { content }
@@ -75,7 +78,7 @@ extension View {
      - Parameter chartData: Chart data model.
      - Returns: A  new view containing the chart with labels marking the x axis.
      */
-    public func xAxisLabels<T: CTLineBarChartDataProtocol>(chartData: T) -> some View {
-        self.modifier(XAxisLabels(chartData: chartData))
+    public func xAxisLabels<T: CTLineBarChartDataProtocol>(chartData: T, leadingTrailingPadding: CGFloat = 0) -> some View {
+        self.modifier(XAxisLabels(chartData: chartData, leadingTrailingPadding: leadingTrailingPadding))
     }
 }
