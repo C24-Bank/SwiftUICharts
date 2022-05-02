@@ -30,7 +30,7 @@ internal struct XAxisLabels<T>: ViewModifier where T: CTLineBarChartDataProtocol
                 if chartData.isGreaterThanTwo() {
                     VStack {
                         content
-                        chartData.getXAxisLabels().padding(.top, 2).padding([ .leading, .trailing ], leadingTrailingPadding)
+                        chartData.getXAxisLabels(leadingTrailingPadding: leadingTrailingPadding).padding(.top, 2)
                         chartData.getXAxisTitle()
                     }
                 } else { content }
@@ -38,7 +38,7 @@ internal struct XAxisLabels<T>: ViewModifier where T: CTLineBarChartDataProtocol
                 if chartData.isGreaterThanTwo() {
                     VStack {
                         chartData.getXAxisTitle()
-                        chartData.getXAxisLabels().padding(.bottom, 2).padding([ .leading, .trailing ], leadingTrailingPadding)
+                        chartData.getXAxisLabels(leadingTrailingPadding: leadingTrailingPadding).padding(.bottom, 2)
                         content
                     }
                 } else { content }

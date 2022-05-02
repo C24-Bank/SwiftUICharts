@@ -71,7 +71,7 @@ public protocol CTLineBarChartDataProtocol: CTChartData where CTStyle: CTLineBar
     /**
      Displays a view for the labels on the X Axis.
      */
-    func getXAxisLabels() -> XLabels
+    func getXAxisLabels(leadingTrailingPadding: CGFloat) -> XLabels
     
     /**
      A type representing a View for displaying labels on the X axis.

@@ -123,11 +123,12 @@ public final class GroupedBarChartData: CTMultiBarChartDataProtocol, ChartConfor
     }
     
     // MARK: Labels
-    public func getXAxisLabels() -> some View {
+    public func getXAxisLabels(leadingTrailingPadding: CGFloat) -> some View {
         Group {
             switch self.chartStyle.xAxisLabelsFrom {
             case .dataPoint(let angle):
                 HStack(spacing: 0) {
+                    Spacer().frame(width: leadingTrailingPadding)
                     ForEach(dataSets.dataSets.indices, id: \.self) { i in
                         if i > 0 {
                             Spacer().frame(minWidth: 0, maxWidth: 500)
@@ -147,6 +148,7 @@ public final class GroupedBarChartData: CTMultiBarChartDataProtocol, ChartConfor
                             Spacer().frame(minWidth: 0, maxWidth: 500)
                         }
                     }
+                    Spacer().frame(width: leadingTrailingPadding)
                 }
             case .chartData(let angle):
                 if let labelArray = self.xAxisLabels {

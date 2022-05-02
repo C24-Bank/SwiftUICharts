@@ -111,7 +111,7 @@ public final class HorizontalBarChartData: CTHorizontalBarChartDataProtocol, Cha
     }
     
     // MARK: Labels
-    public func getXAxisLabels() -> some View {
+    public func getXAxisLabels(leadingTrailingPadding: CGFloat) -> some View {
         HStack(spacing: 0) {
             ForEach(self.labelsArray.indices, id: \.self) { i in
                 Text(LocalizedStringKey(self.labelsArray[i]))
