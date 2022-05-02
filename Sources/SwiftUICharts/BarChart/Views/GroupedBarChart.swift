@@ -28,6 +28,7 @@ public struct GroupedBarChart<ChartData>: View where ChartData: GroupedBarChartD
     
     @ObservedObject private var chartData: ChartData
     private let groupSpacing: CGFloat
+    private let padding: CGFloat
 
     
     /// Initialises a grouped bar chart view.
@@ -41,6 +42,7 @@ public struct GroupedBarChart<ChartData>: View where ChartData: GroupedBarChartD
     ) {
         self.chartData = chartData
         self.groupSpacing = groupSpacing
+        self.padding = padding
         self.chartData.groupSpacing = groupSpacing
         self.chartData.padding = padding
     }
@@ -53,7 +55,7 @@ public struct GroupedBarChart<ChartData>: View where ChartData: GroupedBarChartD
                         GroupedBarGroup(chartData: chartData, dataSet: dataSet)
                     }
                 }
-                .padding([ .leading, .trailing], chartData.padding)
+                .padding([ .leading, .trailing], padding)
                 .onAppear { // Needed for axes label frames
                     self.chartData.viewData.chartSize = geo.frame(in: .local)
                 }
