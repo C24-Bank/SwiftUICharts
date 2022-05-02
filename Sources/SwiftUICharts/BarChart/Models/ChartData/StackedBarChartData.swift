@@ -120,7 +120,7 @@ public final class StackedBarChartData: CTMultiBarChartDataProtocol, ChartConfor
     }
     
     // MARK: Labels
-    public func getXAxisLabels(leadingTrailingPadding: CGFloat) -> some View {
+    public func getXAxisLabels() -> some View {
         Group {
             switch self.chartStyle.xAxisLabelsFrom {
             case .dataPoint(let angle):

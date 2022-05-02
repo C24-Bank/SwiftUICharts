@@ -107,7 +107,7 @@ public final class LineChartData: CTLineChartDataProtocol, ChartConformance {
     }
     
     // MARK: Labels
-    public func getXAxisLabels(leadingTrailingPadding: CGFloat) -> some View {
+    public func getXAxisLabels() -> some View {
         Group {
             switch self.chartStyle.xAxisLabelsFrom {
             case .dataPoint(let angle):
