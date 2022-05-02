@@ -38,7 +38,7 @@ public struct GroupedBarChart<ChartData>: View where ChartData: GroupedBarChartD
     public init(
         chartData: ChartData,
         groupSpacing: CGFloat,
-        padding: CGFloat
+        padding: CGFloat = 0
     ) {
         self.chartData = chartData
         self.groupSpacing = groupSpacing
