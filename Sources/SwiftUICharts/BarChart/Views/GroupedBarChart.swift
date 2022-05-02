@@ -55,13 +55,7 @@ public struct GroupedBarChart<ChartData>: View where ChartData: GroupedBarChartD
                 }
                 .padding([ .leading, .trailing], chartData.padding)
                 .onAppear { // Needed for axes label frames
-                    let size = geo.frame(in: .local)
-                    self.chartData.viewData.chartSize = CGRect(
-                        x: size.minX,
-                        y: size.minY,
-                        width: size.width - chartData.padding * 2,
-                        height: size.height
-                    )
+                    self.chartData.viewData.chartSize = geo.frame(in: .local)
                 }
             } else { CustomNoDataView(chartData: chartData) }
         }
