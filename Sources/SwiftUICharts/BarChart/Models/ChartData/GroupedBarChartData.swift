@@ -41,6 +41,7 @@ public final class GroupedBarChartData: CTMultiBarChartDataProtocol, ChartConfor
     @Published public var animations: BarElementAnimation
     
     @Published public var groupSpacing: CGFloat = 0
+    @Published public var padding: CGFloat = 0
     @Published public var groups: [GroupingData]
         
     public var noDataText: Text
@@ -141,13 +142,14 @@ public final class GroupedBarChartData: CTMultiBarChartDataProtocol, ChartConfor
                                 RotatedText(chartData: self, label: self.dataSets.dataSets[i].setTitle, rotation: angle)
                             }
                         }
-                        .frame(width: self.getXSectionForDataPoint(dataSet: self.dataSets, chartSize: self.viewData.chartSize, groupSpacing: self.groupSpacing),
+                        .frame(width: self.getXSectionForDataPoint(dataSet: self.dataSets, chartSize: self.viewData.chartSize, groupSpacing: self.groupSpacing, padding: self.padding),
                                height: self.viewData.xAxisLabelHeights.max())
                         if i < self.dataSets.dataSets.count - 1 {
                             Spacer().frame(minWidth: 0, maxWidth: 500)
                         }
                     }
                 }
+                .padding([ .leading, .trailing ], self.padding)
             case .chartData(let angle):
                 if let labelArray = self.xAxisLabels {
                     HStack(spacing: 0) {
@@ -176,8 +178,8 @@ public final class GroupedBarChartData: CTMultiBarChartDataProtocol, ChartConfor
         }
     }
     
-    private func getXSectionForDataPoint(dataSet: GroupedBarDataSets, chartSize: CGRect, groupSpacing: CGFloat) -> CGFloat {
-        let superXSection: CGFloat = (chartSize.width / CGFloat(dataSet.dataSets.count))
+    private func getXSectionForDataPoint(dataSet: GroupedBarDataSets, chartSize: CGRect, groupSpacing: CGFloat, padding: CGFloat) -> CGFloat {
+        let superXSection: CGFloat = ((chartSize.width - padding * 2) / CGFloat(dataSet.dataSets.count))
         let compensation: CGFloat = ((groupSpacing * CGFloat(dataSets.dataSets.count - 1)) / CGFloat(dataSets.dataSets.count))
         let section = superXSection - compensation
         return section > 0 ? section : 0
