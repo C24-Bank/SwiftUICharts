@@ -93,7 +93,12 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         let isNewSegment = index >= lastNumberOfDataPoints
         let amount = isNewSegment ? 0 : dp.amount
         let percentage = (amount * 15.91549430919)/100
-        return circleAnimationDuration * percentage
+        
+        if isNewSegment {
+            return circleAnimationDuration * percentage
+        } else {
+            return 0.33
+        }
     }
     
     private func animationDelay(for dp: PieChartDataPoint, index: Int) -> Double {
@@ -105,7 +110,8 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         if isNewSegment {
             return baseDelay
         } else {
-            return baseDelay - Double(index) * 0.05
+            return 0
+//            return baseDelay - Double(index) * 0.05
         }
     }
 }
