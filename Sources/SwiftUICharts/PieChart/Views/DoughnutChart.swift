@@ -49,7 +49,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
                 ForEach(chartData.dataSets.dataPoints.indices, id: \.self) { data in
                     DoughnutSegmentShape(id: chartData.dataSets.dataPoints[data].id,
                                          startAngle: chartData.dataSets.dataPoints[data].startAngle,
-                                         amount: chartData.dataSets.dataPoints[data].amount)
+                                         amount: startAnimation ? chartData.dataSets.dataPoints[data].amount : 0)
                         .stroke(chartData.dataSets.dataPoints[data].colour,
                                 lineWidth: chartData.chartStyle.strokeWidth)
                         .overlay(dataPoint: chartData.dataSets.dataPoints[data],
