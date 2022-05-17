@@ -52,8 +52,15 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         return GeometryReader { geo in
             ZStack {
                 ForEach(chartData.dataSets.dataPoints.indices, id: \.self) { data in
+                    let amount = data < lastNumberOfDataPoints ? chartData.dataSets.dataPoints[data].amount : 0
+                    let startAngle = data < lastNumberOfDataPoints ? chartData.dataSets.dataPoints[data].startAngle : 0
+                    let size = abs(amount-startAngle)
+                    let percentage = size * 15.91549430919
+                    //15.91549430919
+                    let animationDuration = 1.0 * percentage
+                    let animationDelay = 1.0 * (startAngle * 15.91549430919)
                     DoughnutSegmentShape(id: chartData.dataSets.dataPoints[data].id,
-                                         startAngle: chartData.dataSets.dataPoints[data].startAngle,
+                                         startAngle: data < lastNumberOfDataPoints ? chartData.dataSets.dataPoints[data].startAngle : 0,
                                          amount: data < lastNumberOfDataPoints ? chartData.dataSets.dataPoints[data].amount : 0)
                         .stroke(chartData.dataSets.dataPoints[data].colour,
                                 lineWidth: chartData.chartStyle.strokeWidth)
@@ -64,7 +71,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
 //                        .opacity(startAnimation ? 1 : 0)
                         .id(chartData.dataSets.dataPoints[data].id)
 //                        .animation(Animation.spring().delay(Double(data) * 0.06))
-                        .animation(.easeInOut(duration: 0.44).delay(Double(data) * 0.44))
+                        .animation(.linear(duration: animationDuration).delay(animationDelay))
                         .if(chartData.touchPointData == [chartData.dataSets.dataPoints[data]]) {
                             $0
                                 .scaleEffect(1.1)
