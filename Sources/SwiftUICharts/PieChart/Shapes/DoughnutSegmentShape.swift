@@ -18,6 +18,20 @@ internal struct DoughnutSegmentShape: InsettableShape, Identifiable {
     var amount: Double
     var insetAmount: CGFloat = 0
     
+    private var SidesDouble: Double
+    
+    init(id: UUID, startAngle: Double, amount: Double) {
+        self.id = id
+        self.startAngle = startAngle
+        self.amount = amount
+        self.SidesDouble = amount
+    }
+    
+    var animatableData: Double {
+        get { return SidesDouble }
+        set { SidesDouble = newValue }
+        }
+    
     func inset(by amount: CGFloat) -> some InsettableShape {
         var arc = self
         arc.insetAmount += amount
@@ -31,7 +45,7 @@ internal struct DoughnutSegmentShape: InsettableShape, Identifiable {
         path.addRelativeArc(center: center,
                             radius: radius - insetAmount,
                             startAngle: Angle(radians: startAngle),
-                            delta: Angle(radians: amount))
+                            delta: Angle(radians: SidesDouble))
         return path
     }
 }
