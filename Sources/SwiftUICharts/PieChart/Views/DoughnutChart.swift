@@ -52,11 +52,10 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
                                          amount: chartData.dataSets.dataPoints[data].amount)
                         .stroke(chartData.dataSets.dataPoints[data].colour,
                                 lineWidth: chartData.chartStyle.strokeWidth)
-                        .cornerRadius(4)
                         .overlay(dataPoint: chartData.dataSets.dataPoints[data],
                                  chartData: chartData,
                                  rect: geo.frame(in: .local))
-                        .scaleEffect(startAnimation ? 1 : 0)
+//                        .scaleEffect(startAnimation ? 1 : 0)
                         .opacity(startAnimation ? 1 : 0)
                         .animation(Animation.spring().delay(Double(data) * 0.06))
                         .if(chartData.touchPointData == [chartData.dataSets.dataPoints[data]]) {
