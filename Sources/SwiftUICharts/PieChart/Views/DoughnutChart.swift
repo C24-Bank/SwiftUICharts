@@ -56,7 +56,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
                     let animationDelay = animationDelay(for: chartData.dataSets.dataPoints[data], index: data)
                     
                     DoughnutSegmentShape(id: chartData.dataSets.dataPoints[data].id,
-                                         startAngle: data < lastNumberOfDataPoints ? chartData.dataSets.dataPoints[data].startAngle : 0,
+                                         startAngle: chartData.dataSets.dataPoints[data].startAngle,
                                          amount: data < lastNumberOfDataPoints ? chartData.dataSets.dataPoints[data].amount : 0)
                         .stroke(chartData.dataSets.dataPoints[data].colour,
                                 lineWidth: chartData.chartStyle.strokeWidth)
@@ -89,7 +89,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     
     private func animationDuration(for dp: PieChartDataPoint, index: Int) -> Double {
         var amount = index < lastNumberOfDataPoints ? dp.amount : 0
-        var startAngle = index < lastNumberOfDataPoints ? dp.startAngle : 0
+        var startAngle = dp.startAngle
         
         while amount < 0 {
             amount += 2 * Double.pi
@@ -112,7 +112,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     
     private func animationDelay(for dp: PieChartDataPoint, index: Int) -> Double {
         var amount = index < lastNumberOfDataPoints ? dp.amount : 0
-        var startAngle = index < lastNumberOfDataPoints ? dp.startAngle : 0
+        var startAngle = dp.startAngle
         
         while amount < 0 {
             amount += 2 * Double.pi
