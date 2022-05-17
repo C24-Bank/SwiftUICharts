@@ -50,9 +50,9 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
                     DoughnutSegmentShape(id: chartData.dataSets.dataPoints[data].id,
                                          startAngle: chartData.dataSets.dataPoints[data].startAngle,
                                          amount: chartData.dataSets.dataPoints[data].amount)
-                    .cornerRadius(4)
                         .stroke(chartData.dataSets.dataPoints[data].colour,
                                 lineWidth: chartData.chartStyle.strokeWidth)
+                        .cornerRadius(4)
                         .overlay(dataPoint: chartData.dataSets.dataPoints[data],
                                  chartData: chartData,
                                  rect: geo.frame(in: .local))
