@@ -35,6 +35,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     @ObservedObject private var chartData: ChartData
     
     @State private var startAnimation: Bool
+    @State private var lastNumberOfDataPoints = 0
     
     /// Initialises a bar chart view.
     /// - Parameter chartData: Must be DoughnutChartData.
@@ -44,30 +45,33 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     }
     
     public var body: some View {
-        GeometryReader { geo in
+        DispatchQueue.main.async {
+            lastNumberOfDataPoints = chartData.dataSets.dataPoints.count
+        }
+        
+        return GeometryReader { geo in
             ZStack {
-                ForEach(chartData.dataSets.dataPoints, id: \.self) { data in
-                    let index = chartData.dataSets.dataPoints.firstIndex { $0.id == data.id } ?? 0
-                    DoughnutSegmentShape(id: data.id,
-                                         startAngle: data.startAngle,
-                                         amount: startAnimation ? data.amount : 0)
-                        .stroke(data.colour,
+                ForEach(chartData.dataSets.dataPoints.indices, id: \.self) { data in
+                    DoughnutSegmentShape(id: chartData.dataSets.dataPoints[data].id,
+                                         startAngle: chartData.dataSets.dataPoints[data].startAngle,
+                                         amount: data <= lastNumberOfDataPoints ? chartData.dataSets.dataPoints[data].amount : 0)
+                        .stroke(chartData.dataSets.dataPoints[data].colour,
                                 lineWidth: chartData.chartStyle.strokeWidth)
-                        .overlay(dataPoint: data,
+                        .overlay(dataPoint: chartData.dataSets.dataPoints[data],
                                  chartData: chartData,
                                  rect: geo.frame(in: .local))
 //                        .scaleEffect(startAnimation ? 1 : 0)
 //                        .opacity(startAnimation ? 1 : 0)
-                        .id(data.id)
-                        .animation(Animation.spring().delay(Double(index) * 0.06))
-                        .if(chartData.touchPointData == [data]) {
+                        .id(chartData.dataSets.dataPoints[data].id)
+                        .animation(Animation.spring().delay(Double(data) * 0.06))
+                        .if(chartData.touchPointData == [chartData.dataSets.dataPoints[data]]) {
                             $0
                                 .scaleEffect(1.1)
                                 .zIndex(1)
                                 .shadow(color: Color.primary, radius: 10)
                         }
                         .accessibilityLabel(chartData.accessibilityTitle)
-                        .accessibilityValue(data.getCellAccessibilityValue(specifier: chartData.infoView.touchSpecifier))
+                        .accessibilityValue(chartData.dataSets.dataPoints[data].getCellAccessibilityValue(specifier: chartData.infoView.touchSpecifier))
                 }
             }
         }
