@@ -87,49 +87,25 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         }
     }
     
+    private let circleAnimationDuration: Double = 0.8
+    
     private func animationDuration(for dp: PieChartDataPoint, index: Int) -> Double {
-        var amount = index < lastNumberOfDataPoints ? dp.amount : 0
-//        var startAngle = dp.startAngle
-//
-//        while amount < 0 {
-//            amount += 2 * Double.pi
-//            startAngle += 2 * Double.pi
-//        }
-//
-//        while startAngle < 0 {
-//            startAngle += 2 * Double.pi
-//            amount += 2 * Double.pi
-//        }
-//
-//        let size = abs(amount-startAngle)
-        let percentage = amount * (15.91549430919/100)
-        //15.91549430919
-        let animationDuration = 1.0 * percentage
-//        let animationDelay = 1.0 * (startAngle * (15.91549430919/100))
-        
-        return animationDuration
+        let isNewSegment = index >= lastNumberOfDataPoints
+        let amount = isNewSegment ? 0 : dp.amount
+        let percentage = (amount * 15.91549430919)/100
+        return circleAnimationDuration * percentage
     }
     
     private func animationDelay(for dp: PieChartDataPoint, index: Int) -> Double {
-//        var amount = index < lastNumberOfDataPoints ? dp.amount : 0
-        var startAngle = dp.startAngle + Double.pi/2
+        let isNewSegment = index >= lastNumberOfDataPoints
+        let startAngle = dp.startAngle + Double.pi/2
+        let percentage = (startAngle * 15.91549430919)/100
+        let baseDelay = circleAnimationDuration * percentage
         
-//        while amount < 0 {
-//            amount += 2 * Double.pi
-//            startAngle += 2 * Double.pi
-//        }
-//
-//        while startAngle < 0 {
-//            startAngle += 2 * Double.pi
-//            amount += 2 * Double.pi
-//        }
-//
-//        let size = abs(amount-startAngle)
-//        let percentage = size * (15.91549430919/100)
-//        //15.91549430919
-//        let animationDuration = 1.0 * (percentage/100)
-        let animationDelay = 1.0 * (startAngle * (15.91549430919/100))
-        
-        return animationDelay
+        if isNewSegment {
+            return baseDelay
+        } else {
+            return baseDelay - Double(index) * 0.05
+        }
     }
 }
