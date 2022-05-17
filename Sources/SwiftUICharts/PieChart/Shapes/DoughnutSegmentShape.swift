@@ -35,8 +35,6 @@ import SwiftUI
 @available(iOS 14.0, *)
 internal struct DoughnutSegmentShape: InsettableShape, Identifiable {
     
-    
-    
     var id: UUID
     var startAngle: Double
     var amount: Double
@@ -58,7 +56,7 @@ internal struct DoughnutSegmentShape: InsettableShape, Identifiable {
         set { animatableStart = newValue.first
             animatableAmount = newValue.second
         }
-        }
+    }
     
     func inset(by amount: CGFloat) -> some InsettableShape {
         var arc = self
