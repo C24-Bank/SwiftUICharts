@@ -53,7 +53,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
                         .stroke(chartData.dataSets.dataPoints[data].colour,
                                 style: StrokeStyle(
                                     lineWidth: chartData.chartStyle.strokeWidth,
-                                    lineCap: .round
+                                    lineJoin: .round
                                 )
                         )
                         .overlay(dataPoint: chartData.dataSets.dataPoints[data],
