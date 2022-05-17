@@ -89,45 +89,45 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     
     private func animationDuration(for dp: PieChartDataPoint, index: Int) -> Double {
         var amount = index < lastNumberOfDataPoints ? dp.amount : 0
-        var startAngle = dp.startAngle
-        
-        while amount < 0 {
-            amount += 2 * Double.pi
-            startAngle += 2 * Double.pi
-        }
-        
-        while startAngle < 0 {
-            startAngle += 2 * Double.pi
-            amount += 2 * Double.pi
-        }
-        
-        let size = abs(amount-startAngle)
-        let percentage = size * (15.91549430919/100)
+//        var startAngle = dp.startAngle
+//
+//        while amount < 0 {
+//            amount += 2 * Double.pi
+//            startAngle += 2 * Double.pi
+//        }
+//
+//        while startAngle < 0 {
+//            startAngle += 2 * Double.pi
+//            amount += 2 * Double.pi
+//        }
+//
+//        let size = abs(amount-startAngle)
+        let percentage = amount * (15.91549430919/100)
         //15.91549430919
         let animationDuration = 1.0 * percentage
-        let animationDelay = 1.0 * (startAngle * (15.91549430919/100))
+//        let animationDelay = 1.0 * (startAngle * (15.91549430919/100))
         
         return animationDuration
     }
     
     private func animationDelay(for dp: PieChartDataPoint, index: Int) -> Double {
-        var amount = index < lastNumberOfDataPoints ? dp.amount : 0
-        var startAngle = dp.startAngle
+//        var amount = index < lastNumberOfDataPoints ? dp.amount : 0
+        var startAngle = dp.startAngle + Double.pi/2
         
-        while amount < 0 {
-            amount += 2 * Double.pi
-            startAngle += 2 * Double.pi
-        }
-        
-        while startAngle < 0 {
-            startAngle += 2 * Double.pi
-            amount += 2 * Double.pi
-        }
-        
-        let size = abs(amount-startAngle)
-        let percentage = size * (15.91549430919/100)
-        //15.91549430919
-        let animationDuration = 1.0 * (percentage/100)
+//        while amount < 0 {
+//            amount += 2 * Double.pi
+//            startAngle += 2 * Double.pi
+//        }
+//
+//        while startAngle < 0 {
+//            startAngle += 2 * Double.pi
+//            amount += 2 * Double.pi
+//        }
+//
+//        let size = abs(amount-startAngle)
+//        let percentage = size * (15.91549430919/100)
+//        //15.91549430919
+//        let animationDuration = 1.0 * (percentage/100)
         let animationDelay = 1.0 * (startAngle * (15.91549430919/100))
         
         return animationDelay
