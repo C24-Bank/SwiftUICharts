@@ -104,7 +104,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         let size = abs(amount-startAngle)
         let percentage = size * (15.91549430919/100)
         //15.91549430919
-        let animationDuration = 1.0 * (percentage/100)
+        let animationDuration = 1.0 * percentage
         let animationDelay = 1.0 * (startAngle * (15.91549430919/100))
         
         return animationDuration
