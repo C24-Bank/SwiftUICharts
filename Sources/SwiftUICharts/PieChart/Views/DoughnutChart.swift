@@ -46,27 +46,28 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     public var body: some View {
         GeometryReader { geo in
             ZStack {
-                ForEach(chartData.dataSets.dataPoints.indices, id: \.self) { data in
-                    DoughnutSegmentShape(id: chartData.dataSets.dataPoints[data].id,
-                                         startAngle: chartData.dataSets.dataPoints[data].startAngle,
-                                         amount: startAnimation ? chartData.dataSets.dataPoints[data].amount : 0)
-                        .stroke(chartData.dataSets.dataPoints[data].colour,
+                ForEach(chartData.dataSets.dataPoints, id: \.self) { data in
+                    let index = chartData.dataSets.dataPoints.firstIndex { $0.id == data.id } ?? 0
+                    DoughnutSegmentShape(id: data.id,
+                                         startAngle: data.startAngle,
+                                         amount: startAnimation ? data.amount : 0)
+                        .stroke(data.colour,
                                 lineWidth: chartData.chartStyle.strokeWidth)
-                        .overlay(dataPoint: chartData.dataSets.dataPoints[data],
+                        .overlay(dataPoint: data,
                                  chartData: chartData,
                                  rect: geo.frame(in: .local))
 //                        .scaleEffect(startAnimation ? 1 : 0)
 //                        .opacity(startAnimation ? 1 : 0)
-                        .id(chartData.dataSets.dataPoints[data].id)
-                        .animation(Animation.spring().delay(Double(data) * 0.06))
-                        .if(chartData.touchPointData == [chartData.dataSets.dataPoints[data]]) {
+                        .id(data.id)
+                        .animation(Animation.spring().delay(Double(index) * 0.06))
+                        .if(chartData.touchPointData == [data]) {
                             $0
                                 .scaleEffect(1.1)
                                 .zIndex(1)
                                 .shadow(color: Color.primary, radius: 10)
                         }
                         .accessibilityLabel(chartData.accessibilityTitle)
-                        .accessibilityValue(chartData.dataSets.dataPoints[data].getCellAccessibilityValue(specifier: chartData.infoView.touchSpecifier))
+                        .accessibilityValue(data.getCellAccessibilityValue(specifier: chartData.infoView.touchSpecifier))
                 }
             }
         }
