@@ -7,29 +7,57 @@
 
 import SwiftUI
 
+//struct Bla {
+//    let tstartAngle: Double
+//    let tamount: Double
+//}
+//
+//extension Bla: VectorArithmetic {
+//
+//    mutating func scale(by rhs: Double) {
+//        <#code#>
+//    }
+//
+//    var magnitudeSquared: Double {
+//        <#code#>
+//    }
+//
+//    static var zero: Bla {
+//        return Bla(tstartAngle: 0, tamount: 0)
+//    }
+//
+//
+//}
+
 /**
  Draws a doughnut segment.
  */
 @available(iOS 14.0, *)
 internal struct DoughnutSegmentShape: InsettableShape, Identifiable {
     
+    
+    
     var id: UUID
     var startAngle: Double
     var amount: Double
     var insetAmount: CGFloat = 0
     
-    private var SidesDouble: Double
+    private var animatableStart: Double
+    private var animatableAmount: Double
     
     init(id: UUID, startAngle: Double, amount: Double) {
         self.id = id
         self.startAngle = startAngle
         self.amount = amount
-        self.SidesDouble = amount
+        self.animatableStart = startAngle
+        self.animatableAmount = amount
     }
     
-    var animatableData: Double {
-        get { return SidesDouble }
-        set { SidesDouble = newValue }
+    var animatableData: AnimatablePair<Double, Double> {
+        get { return AnimatablePair(animatableStart, animatableAmount) }
+        set { animatableStart = newValue.first
+            animatableAmount = newValue.second
+        }
         }
     
     func inset(by amount: CGFloat) -> some InsettableShape {
@@ -44,8 +72,8 @@ internal struct DoughnutSegmentShape: InsettableShape, Identifiable {
         var path = Path()
         path.addRelativeArc(center: center,
                             radius: radius - insetAmount,
-                            startAngle: Angle(radians: startAngle),
-                            delta: Angle(radians: SidesDouble))
+                            startAngle: Angle(radians: animatableStart),
+                            delta: Angle(radians: animatableAmount))
         return path
     }
 }
