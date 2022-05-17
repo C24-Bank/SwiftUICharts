@@ -52,13 +52,24 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         return GeometryReader { geo in
             ZStack {
                 ForEach(chartData.dataSets.dataPoints.indices, id: \.self) { data in
-                    let amount = data < lastNumberOfDataPoints ? chartData.dataSets.dataPoints[data].amount : 0
-                    let startAngle = data < lastNumberOfDataPoints ? chartData.dataSets.dataPoints[data].startAngle : 0
+                    var amount = data < lastNumberOfDataPoints ? chartData.dataSets.dataPoints[data].amount : 0
+                    var startAngle = data < lastNumberOfDataPoints ? chartData.dataSets.dataPoints[data].startAngle : 0
+                    
+                    while amount < 0 {
+                        amount += 2 * Double.pi
+                        startAngle += 2 * Double.pi
+                    }
+                    
+                    while startAngle < 0 {
+                        startAngle += 2 * Double.pi
+                        amount += 2 * Double.pi
+                    }
+                    
                     let size = abs(amount-startAngle)
-                    let percentage = size * 15.91549430919
+                    let percentage = size * (15.91549430919/100)
                     //15.91549430919
-                    let animationDuration = 1.0 * percentage
-                    let animationDelay = 1.0 * (startAngle * 15.91549430919)
+                    let animationDuration = 1.0 * (percentage/100)
+                    let animationDelay = 1.0 * (startAngle * (15.91549430919/100))
                     DoughnutSegmentShape(id: chartData.dataSets.dataPoints[data].id,
                                          startAngle: data < lastNumberOfDataPoints ? chartData.dataSets.dataPoints[data].startAngle : 0,
                                          amount: data < lastNumberOfDataPoints ? chartData.dataSets.dataPoints[data].amount : 0)
