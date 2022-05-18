@@ -97,11 +97,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     
     private let circleAnimationDuration: Double = 0.66
     
-    // TODO: Issue is that isNewSegment does not work, because on the second reload isNewSegment is always false I suppose
-    // We would need to figure out if we're transitioning, but how?
-    
     private func animationDuration(for dp: PieChartDataPoint, index: Int) -> Double {
-//        let isNewSegment = index >= lastNumberOfDataPoints
         var isNewSegment = true
         if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount.1 > 0 {
             isNewSegment = false
@@ -118,13 +114,16 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     
     private func animationDelay(for dp: PieChartDataPoint, index: Int) -> Double {
         var startAdjust = Double(0)
-        for lastAmount in lastAmounts.values {
-            if lastAmount.1 > 0 {
-                startAdjust = max(startAdjust, lastAmount.0 + lastAmount.1)
+        for lastAmount in lastAmounts {
+            let id = lastAmount.key
+            let entry = lastAmount.value
+            if entry.1 > 0 {
+                if let newDP = chartData.dataSets.dataPoints.first { $0.id == id } {
+                    startAdjust = max(startAdjust, newDP.startAngle + newDP.amount)
+                }
             }
         }
         
-//        let isNewSegment = index >= lastNumberOfDataPoints
         var isNewSegment = true
         if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount.1 > 0 {
             isNewSegment = false
@@ -137,7 +136,6 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
             return baseDelay
         } else {
             return 0
-//            return baseDelay - Double(index) * 0.05
         }
     }
 }
