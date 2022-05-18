@@ -88,6 +88,10 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     }
     
     private func animationDuration(for dp: PieChartDataPoint) -> Double {
+        guard chartData.shouldAnimate else {
+            return 0
+        }
+        
         var currentAmount = Double(0)
         if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id] {
             currentAmount = lastAmount.amount
@@ -100,6 +104,10 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     }
     
     private func animationDelay(for dp: PieChartDataPoint) -> Double {
+        guard chartData.shouldAnimate else {
+            return 0
+        }
+        
         var isNewSegment = true
         if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount.1 > 0 {
             isNewSegment = false

@@ -7,28 +7,6 @@
 
 import SwiftUI
 
-//struct Bla {
-//    let tstartAngle: Double
-//    let tamount: Double
-//}
-//
-//extension Bla: VectorArithmetic {
-//
-//    mutating func scale(by rhs: Double) {
-//        <#code#>
-//    }
-//
-//    var magnitudeSquared: Double {
-//        <#code#>
-//    }
-//
-//    static var zero: Bla {
-//        return Bla(tstartAngle: 0, tamount: 0)
-//    }
-//
-//
-//}
-
 /**
  Draws a doughnut segment.
  */
