@@ -48,7 +48,11 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     public var body: some View {
         DispatchQueue.main.async {
             for dp in chartData.dataSets.dataPoints {
-                lastAmounts[dp.id] = dp.amount
+                if lastAmounts.keys.contains(dp.id) {
+                    lastAmounts[dp.id] = dp.amount
+                } else {
+                    lastAmounts[dp.id] = 0
+                }
             }
 //            lastNumberOfDataPoints = chartData.dataSets.dataPoints.count
         }
@@ -99,7 +103,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     private func animationDuration(for dp: PieChartDataPoint, index: Int) -> Double {
 //        let isNewSegment = index >= lastNumberOfDataPoints
         var isNewSegment = true
-        if lastAmounts.keys.contains(dp.id) {
+        if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount > 0 {
             isNewSegment = false
         }
         let amount = isNewSegment ? 0 : dp.amount
@@ -115,7 +119,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     private func animationDelay(for dp: PieChartDataPoint, index: Int) -> Double {
 //        let isNewSegment = index >= lastNumberOfDataPoints
         var isNewSegment = true
-        if lastAmounts.keys.contains(dp.id) {
+        if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount > 0 {
             isNewSegment = false
         }
         let startAngle = dp.startAngle + Double.pi/2
