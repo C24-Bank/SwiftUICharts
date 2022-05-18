@@ -106,7 +106,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount > 0 {
             isNewSegment = false
         }
-        let amount = isNewSegment ? 0 : dp.amount
+        let amount = dp.amount
         let percentage = (amount * 15.91549430919)/100
         
         if isNewSegment {
