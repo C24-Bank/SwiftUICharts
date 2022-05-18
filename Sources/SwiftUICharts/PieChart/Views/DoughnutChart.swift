@@ -95,7 +95,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         }
     }
     
-    private let circleAnimationDuration: Double = 0.8
+    private let circleAnimationDuration: Double = 0.66
     
     // TODO: Issue is that isNewSegment does not work, because on the second reload isNewSegment is always false I suppose
     // We would need to figure out if we're transitioning, but how?
