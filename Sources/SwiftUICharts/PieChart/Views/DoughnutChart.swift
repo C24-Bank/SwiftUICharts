@@ -36,7 +36,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     
     @State private var startAnimation: Bool
 //    @State private var lastNumberOfDataPoints = 0
-    @State private var lastAmounts: [UUID: Double] = [:]
+    @State private var lastAmounts: [UUID: (Double, Double)] = [:]
     
     /// Initialises a bar chart view.
     /// - Parameter chartData: Must be DoughnutChartData.
@@ -49,9 +49,9 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         DispatchQueue.main.async {
             for dp in chartData.dataSets.dataPoints {
                 if lastAmounts.keys.contains(dp.id) {
-                    lastAmounts[dp.id] = dp.amount
+                    lastAmounts[dp.id] = (dp.startAngle, dp.amount)
                 } else {
-                    lastAmounts[dp.id] = 0
+                    lastAmounts[dp.id] = (dp.startAngle, 0)
                 }
             }
 //            lastNumberOfDataPoints = chartData.dataSets.dataPoints.count
@@ -103,7 +103,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     private func animationDuration(for dp: PieChartDataPoint, index: Int) -> Double {
 //        let isNewSegment = index >= lastNumberOfDataPoints
         var isNewSegment = true
-        if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount > 0 {
+        if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount.1 > 0 {
             isNewSegment = false
         }
         let amount = dp.amount
@@ -117,12 +117,19 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     }
     
     private func animationDelay(for dp: PieChartDataPoint, index: Int) -> Double {
+        var startAdjust = Double(0)
+        for lastAmount in lastAmounts.values {
+            if lastAmount.1 > 0 {
+                startAdjust = max(startAdjust, lastAmount.0)
+            }
+        }
+        
 //        let isNewSegment = index >= lastNumberOfDataPoints
         var isNewSegment = true
-        if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount > 0 {
+        if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount.1 > 0 {
             isNewSegment = false
         }
-        let startAngle = dp.startAngle + Double.pi/2
+        let startAngle = dp.startAngle + Double.pi/2 - startAdjust
         let percentage = (startAngle * 15.91549430919)/100
         let baseDelay = circleAnimationDuration * percentage
         
