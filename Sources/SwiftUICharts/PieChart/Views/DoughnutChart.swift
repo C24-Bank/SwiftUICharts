@@ -32,6 +32,7 @@ import SwiftUI
 @available(iOS 14.0, *)
 public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData {
     
+    private let percentPerRadian: Double = 15.91549430919
     private let circleAnimationDuration: Double = 0.66
     
     @ObservedObject private var chartData: ChartData
@@ -88,16 +89,18 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     
     private func animationDuration(for dp: PieChartDataPoint) -> Double {
         var isNewSegment = true
+        var startAmount = Double(0)
         if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount.amount > 0 {
             isNewSegment = false
+            startAmount = lastAmount.amount
         }
         
         // old segments do all transition at the same time, so do not have a delay
         if isNewSegment == false {
         }
         
-        let amount = dp.amount
-        let percentage = (amount * 15.91549430919)/100
+        let amount = abs(startAmount - dp.amount)
+        let percentage = (amount * percentPerRadian)/100
         
 //        if isNewSegment {
             return circleAnimationDuration * percentage
@@ -130,8 +133,8 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
             }
         }
         
-        let startAngle = dp.startAngle + Double.pi/2 - startAdjust
-        let percentage = (startAngle * 15.91549430919)/100
+        let startAngle = dp.startAngle + Double.pi/2 - startAdjust // +pi/2 because in iOS top of the circle (0 degrees) is -pi/2 radians
+        let percentage = (startAngle * percentPerRadian)/100
         
         return circleAnimationDuration * percentage
     }
