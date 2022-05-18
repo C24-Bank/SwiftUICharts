@@ -66,7 +66,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
                     
                     DoughnutSegmentShape(id: chartData.dataSets.dataPoints[data].id,
                                          startAngle: chartData.dataSets.dataPoints[data].startAngle,
-                                         amount: lastAmounts.keys.contains(chartData.dataSets.dataPoints[data].id) ? chartData.dataSets.dataPoints[data].amount : 0)
+                                         amount: chartData.shouldAnimate == false || lastAmounts.keys.contains(chartData.dataSets.dataPoints[data].id) ? chartData.dataSets.dataPoints[data].amount : 0)
                         .stroke(chartData.dataSets.dataPoints[data].colour,
                                 lineWidth: chartData.chartStyle.strokeWidth)
                         .overlay(dataPoint: chartData.dataSets.dataPoints[data],
