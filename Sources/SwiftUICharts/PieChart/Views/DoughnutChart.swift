@@ -89,17 +89,15 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     
     private func animationDuration(for dp: PieChartDataPoint) -> Double {
         var isNewSegment = true
-        var startAmount = Double(0)
         if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount.amount > 0 {
             isNewSegment = false
-            startAmount = lastAmount.amount
         }
         
         // old segments do all transition at the same time, so do not have a delay
         if isNewSegment == false {
         }
         
-        let amount = abs(startAmount - dp.amount)
+        let amount = dp.amount
         let percentage = (amount * percentPerRadian)/100
         
 //        if isNewSegment {
