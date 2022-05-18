@@ -35,7 +35,8 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     @ObservedObject private var chartData: ChartData
     
     @State private var startAnimation: Bool
-    @State private var lastNumberOfDataPoints = 0
+//    @State private var lastNumberOfDataPoints = 0
+    @State private var lastAmounts: [UUID: Double] = [:]
     
     /// Initialises a bar chart view.
     /// - Parameter chartData: Must be DoughnutChartData.
@@ -46,7 +47,10 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     
     public var body: some View {
         DispatchQueue.main.async {
-            lastNumberOfDataPoints = chartData.dataSets.dataPoints.count
+            for dp in chartData.dataSets.dataPoints {
+                lastAmounts[dp.id] = dp.amount
+            }
+//            lastNumberOfDataPoints = chartData.dataSets.dataPoints.count
         }
         
         return GeometryReader { geo in
@@ -57,7 +61,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
                     
                     DoughnutSegmentShape(id: chartData.dataSets.dataPoints[data].id,
                                          startAngle: chartData.dataSets.dataPoints[data].startAngle,
-                                         amount: data < lastNumberOfDataPoints ? chartData.dataSets.dataPoints[data].amount : 0)
+                                         amount: lastAmounts.keys.contains(chartData.dataSets.dataPoints[data].id) ? chartData.dataSets.dataPoints[data].amount : 0)
                         .stroke(chartData.dataSets.dataPoints[data].colour,
                                 lineWidth: chartData.chartStyle.strokeWidth)
                         .overlay(dataPoint: chartData.dataSets.dataPoints[data],
@@ -89,8 +93,15 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     
     private let circleAnimationDuration: Double = 0.8
     
+    // TODO: Issue is that isNewSegment does not work, because on the second reload isNewSegment is always false I suppose
+    // We would need to figure out if we're transitioning, but how?
+    
     private func animationDuration(for dp: PieChartDataPoint, index: Int) -> Double {
-        let isNewSegment = index >= lastNumberOfDataPoints
+//        let isNewSegment = index >= lastNumberOfDataPoints
+        var isNewSegment = true
+        if lastAmounts.keys.contains(dp.id) {
+            isNewSegment = false
+        }
         let amount = isNewSegment ? 0 : dp.amount
         let percentage = (amount * 15.91549430919)/100
         
@@ -102,7 +113,11 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     }
     
     private func animationDelay(for dp: PieChartDataPoint, index: Int) -> Double {
-        let isNewSegment = index >= lastNumberOfDataPoints
+//        let isNewSegment = index >= lastNumberOfDataPoints
+        var isNewSegment = true
+        if lastAmounts.keys.contains(dp.id) {
+            isNewSegment = false
+        }
         let startAngle = dp.startAngle + Double.pi/2
         let percentage = (startAngle * 15.91549430919)/100
         let baseDelay = circleAnimationDuration * percentage
