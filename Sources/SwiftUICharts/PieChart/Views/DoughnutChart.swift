@@ -32,17 +32,18 @@ import SwiftUI
 @available(iOS 14.0, *)
 public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData {
     
+    private let circleAnimationDuration: Double = 0.66
+    
     @ObservedObject private var chartData: ChartData
     
-    @State private var startAnimation: Bool
-//    @State private var lastNumberOfDataPoints = 0
-    @State private var lastAmounts: [UUID: (Double, Double)] = [:]
+    // last amounts displayed for each datapoint. Contains a tuple where the first entry is the startAngle and the
+    // second entry is the amount
+    @State private var lastAmounts: [UUID: (startAngle: Double, amount: Double)] = [:]
     
     /// Initialises a bar chart view.
     /// - Parameter chartData: Must be DoughnutChartData.
     public init(chartData: ChartData) {
         self.chartData = chartData
-        self._startAnimation = State<Bool>(initialValue: chartData.shouldAnimate ? false : true)
     }
     
     public var body: some View {
@@ -54,14 +55,13 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
                     lastAmounts[dp.id] = (dp.startAngle, 0)
                 }
             }
-//            lastNumberOfDataPoints = chartData.dataSets.dataPoints.count
         }
         
         return GeometryReader { geo in
             ZStack {
                 ForEach(chartData.dataSets.dataPoints.indices, id: \.self) { data in
-                    let animationDuration = animationDuration(for: chartData.dataSets.dataPoints[data], index: data)
-                    let animationDelay = animationDelay(for: chartData.dataSets.dataPoints[data], index: data)
+                    let animationDuration = animationDuration(for: chartData.dataSets.dataPoints[data])
+                    let animationDelay = animationDelay(for: chartData.dataSets.dataPoints[data])
                     
                     DoughnutSegmentShape(id: chartData.dataSets.dataPoints[data].id,
                                          startAngle: chartData.dataSets.dataPoints[data].startAngle,
@@ -71,10 +71,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
                         .overlay(dataPoint: chartData.dataSets.dataPoints[data],
                                  chartData: chartData,
                                  rect: geo.frame(in: .local))
-//                        .scaleEffect(startAnimation ? 1 : 0)
-//                        .opacity(startAnimation ? 1 : 0)
                         .id(chartData.dataSets.dataPoints[data].id)
-//                        .animation(Animation.spring().delay(Double(data) * 0.06))
                         .animation(.linear(duration: animationDuration).delay(animationDelay))
                         .if(chartData.touchPointData == [chartData.dataSets.dataPoints[data]]) {
                             $0
@@ -87,55 +84,55 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
                 }
             }
         }
-        .animateOnAppear(using: chartData.chartStyle.globalAnimation) {
-            self.startAnimation = true
-        }
-        .onDisappear {
-            self.startAnimation = false
-        }
     }
     
-    private let circleAnimationDuration: Double = 0.66
+    private func animationDuration(for dp: PieChartDataPoint) -> Double {
+        var isNewSegment = true
+        if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount.amount > 0 {
+            isNewSegment = false
+        }
+        
+        // old segments do all transition at the same time, so do not have a delay
+        if isNewSegment == false {
+        }
+        
+        let amount = dp.amount
+        let percentage = (amount * 15.91549430919)/100
+        
+//        if isNewSegment {
+            return circleAnimationDuration * percentage
+//        } else {
+//            return 0.33
+//        }
+    }
     
-    private func animationDuration(for dp: PieChartDataPoint, index: Int) -> Double {
+    private func animationDelay(for dp: PieChartDataPoint) -> Double {
         var isNewSegment = true
         if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount.1 > 0 {
             isNewSegment = false
         }
-        let amount = dp.amount
-        let percentage = (amount * 15.91549430919)/100
         
-        if isNewSegment {
-            return circleAnimationDuration * percentage
-        } else {
-            return 0.33
+        // old segments do all transition at the same time, so do not have a delay
+        if isNewSegment == false {
+            return 0
         }
-    }
-    
-    private func animationDelay(for dp: PieChartDataPoint, index: Int) -> Double {
+        
+        // All old segments transition at the same time, so their angles have to be ignored when calculating
+        // the delay of new segments
         var startAdjust = Double(0)
         for lastAmount in lastAmounts {
             let id = lastAmount.key
             let entry = lastAmount.value
-            if entry.1 > 0 {
+            if entry.amount > 0 {
                 if let newDP = chartData.dataSets.dataPoints.first { $0.id == id } {
                     startAdjust = max(startAdjust, newDP.startAngle + newDP.amount)
                 }
             }
         }
         
-        var isNewSegment = true
-        if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount.1 > 0 {
-            isNewSegment = false
-        }
         let startAngle = dp.startAngle + Double.pi/2 - startAdjust
         let percentage = (startAngle * 15.91549430919)/100
-        let baseDelay = circleAnimationDuration * percentage
         
-        if isNewSegment {
-            return baseDelay
-        } else {
-            return 0
-        }
+        return circleAnimationDuration * percentage
     }
 }
