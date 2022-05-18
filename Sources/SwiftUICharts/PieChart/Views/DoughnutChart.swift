@@ -120,7 +120,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         var startAdjust = Double(0)
         for lastAmount in lastAmounts.values {
             if lastAmount.1 > 0 {
-                startAdjust = max(startAdjust, lastAmount.0)
+                startAdjust = max(startAdjust, lastAmount.0 + lastAmount.1)
             }
         }
         
