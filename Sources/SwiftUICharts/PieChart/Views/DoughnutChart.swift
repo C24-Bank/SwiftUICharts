@@ -88,25 +88,15 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     }
     
     private func animationDuration(for dp: PieChartDataPoint) -> Double {
-        var isNewSegment = true
-        var startAmount = Double(0)
-        if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount.amount > 0 {
-            isNewSegment = false
-            startAmount = lastAmount.amount
+        var currentAmount = Double(0)
+        if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id] {
+            currentAmount = lastAmount.amount
         }
         
-        // old segments do all transition at the same time, so do not have a delay
-        if isNewSegment == false {
-        }
-        
-        let amount = max(startAmount, dp.amount)
+        let amount = max(currentAmount, dp.amount) // ensures transition animations are not played too fast
         let percentage = (amount * percentPerRadian)/100
         
-//        if isNewSegment {
-            return circleAnimationDuration * percentage
-//        } else {
-//            return 0.33
-//        }
+        return circleAnimationDuration * percentage
     }
     
     private func animationDelay(for dp: PieChartDataPoint) -> Double {
@@ -121,13 +111,14 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         }
         
         // All old segments transition at the same time, so their angles have to be ignored when calculating
-        // the delay of new segments
+        // the delay of new segments. Find the old segment with the largest angle and adjust our own delay
+        // accordingly
         var startAdjust = Double(0)
         for lastAmount in lastAmounts {
             let id = lastAmount.key
             let entry = lastAmount.value
             if entry.amount > 0 {
-                if let newDP = chartData.dataSets.dataPoints.first { $0.id == id } {
+                if let newDP = chartData.dataSets.dataPoints.first(where: { $0.id == id }) {
                     startAdjust = max(startAdjust, newDP.startAngle + newDP.amount)
                 }
             }
