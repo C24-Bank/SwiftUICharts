@@ -92,8 +92,9 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
             return 0
         }
         
-        if lastAmounts.keys.contains(dp.id) {
-            return transitionDuration()
+        let transitionDuration = transitionDuration()
+        if transitionDuration > 0 && lastAmounts.keys.contains(dp.id) {
+            return transitionDuration
         } else {
             let percentage = (dp.amount * percentPerRadian)/100
             return circleAnimationDuration * percentage
