@@ -146,14 +146,18 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
     
     /// Returns the smallest startAngle of all new segments, excluding all transitioning segments
     private func minimumNewSegmentAngle() -> Double {
-        var minimumAngle = Double(0)
+        var minimumAngle: Double?
         for dp in chartData.dataSets.dataPoints {
             if isNewSegment(dp) {
-                minimumAngle = min(minimumAngle, dp.startAngle)
+                if let currentMinimumAngle = minimumAngle {
+                    minimumAngle = min(currentMinimumAngle, dp.startAngle)
+                } else {
+                    minimumAngle = dp.startAngle
+                }
             }
         }
         
-        return minimumAngle
+        return minimumAngle ?? 0
     }
     
     private func isNewSegment(_ dp: PieChartDataPoint) -> Bool {
