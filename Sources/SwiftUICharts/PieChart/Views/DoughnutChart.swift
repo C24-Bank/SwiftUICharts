@@ -135,6 +135,13 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         let startAngle = dp.startAngle + Double.pi/2 - startAdjust // +pi/2 because in iOS top of the circle (0 degrees) is -pi/2 radians
         let percentage = (startAngle * percentPerRadian)/100
         
-        return circleAnimationDuration * percentage
+        var delay = circleAnimationDuration * percentage
+        
+        // If we have transitioning segments, adjust the delay of new segments a bit to make the animation look nicer
+        if startAdjust > 0 {
+            delay += 0.1
+        }
+        
+        return delay
     }
 }
