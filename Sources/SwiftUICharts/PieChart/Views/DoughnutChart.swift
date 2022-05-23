@@ -124,7 +124,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         
         // If we are transitioning segments, adjust the delay of new segments a bit to make the animation look nicer
         if transitionDuration > 0 {
-            delay += 0.16
+            delay += 0.1
         }
         
         return delay
