@@ -120,14 +120,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         let percentage = (startAngle * percentPerRadian)/100
         
         let transitionDuration = transitionDuration()
-        var delay = transitionDuration + (circleAnimationDuration * percentage)
-        
-        // If we are transitioning segments, adjust the delay of new segments a bit to make the animation look nicer
-        if transitionDuration > 0 {
-//            delay += 0.1
-        }
-        
-        return delay
+        return max(transitionDuration + 0.16, (circleAnimationDuration * percentage))
     }
     
     /// Returns the duration required for transitioning existing segments to their new amounts
