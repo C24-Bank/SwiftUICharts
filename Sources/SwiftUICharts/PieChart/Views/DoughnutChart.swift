@@ -92,15 +92,12 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
             return 0
         }
         
-        var currentAmount = Double(0)
-        if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id] {
-            currentAmount = lastAmount.amount
+        if lastAmounts.keys.contains(dp.id) {
+            return transitionDuration()
+        } else {
+            let percentage = (dp.amount * percentPerRadian)/100
+            return circleAnimationDuration * percentage
         }
-        
-        let amount = max(currentAmount, dp.amount) // ensures transition animations are not played too fast
-        let percentage = (amount * percentPerRadian)/100
-        
-        return circleAnimationDuration * percentage
     }
     
     private func animationDelay(for dp: PieChartDataPoint) -> Double {
@@ -118,30 +115,35 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
             return 0
         }
         
-        // All old segments transition at the same time, so their angles have to be ignored when calculating
-        // the delay of new segments. Find the old segment with the largest angle and adjust our own delay
-        // accordingly
-        var startAdjust = Double(0)
+        let startAngle = dp.startAngle + Double.pi/2 // +pi/2 because in iOS top of the circle (0 degrees) is -pi/2 radians
+        let percentage = (startAngle * percentPerRadian)/100
+        
+        let transitionDuration = transitionDuration()
+        var delay = transitionDuration + (circleAnimationDuration * percentage)
+        
+        // If we are transitioning segments, adjust the delay of new segments a bit to make the animation look nicer
+        if transitionDuration > 0 {
+            delay += 0.16
+        }
+        
+        return delay
+    }
+    
+    /// Returns the duration required for transitioning existing segments to their new amounts
+    private func transitionDuration() -> Double {
+        // Find the largest amount we need to transition
+        var amount = Double(0)
         for lastAmount in lastAmounts {
             let id = lastAmount.key
             let entry = lastAmount.value
             if entry.amount > 0 {
                 if let newDP = chartData.dataSets.dataPoints.first(where: { $0.id == id }) {
-                    startAdjust = max(startAdjust, max(newDP.amount, entry.amount))
+                    amount = max(amount, max(newDP.amount, entry.amount))
                 }
             }
         }
         
-        let startAngle = dp.startAngle + Double.pi/2 - startAdjust // +pi/2 because in iOS top of the circle (0 degrees) is -pi/2 radians
-        let percentage = (startAngle * percentPerRadian)/100
-        
-        var delay = circleAnimationDuration * percentage
-        
-        // If we have transitioning segments, adjust the delay of new segments a bit to make the animation look nicer
-        if startAdjust > 0 {
-            delay += 0.16
-        }
-        
-        return delay
+        let percentage = (amount * percentPerRadian)/100
+        return circleAnimationDuration * percentage
     }
 }
