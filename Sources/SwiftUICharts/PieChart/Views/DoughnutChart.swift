@@ -127,7 +127,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
             let entry = lastAmount.value
             if entry.amount > 0 {
                 if let newDP = chartData.dataSets.dataPoints.first(where: { $0.id == id }) {
-                    startAdjust = max(startAdjust, newDP.startAngle + newDP.amount)
+                    startAdjust = max(startAdjust, max(newDP.amount, entry.amount))
                 }
             }
         }
@@ -139,7 +139,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         
         // If we have transitioning segments, adjust the delay of new segments a bit to make the animation look nicer
         if startAdjust > 0 {
-            delay += 0.1
+            delay += 0.16
         }
         
         return delay
