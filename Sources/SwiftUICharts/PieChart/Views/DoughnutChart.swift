@@ -105,22 +105,25 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         guard chartData.shouldAnimate else {
             return 0
         }
-        
-        var isNewSegment = true
-        if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount.1 > 0 {
-            isNewSegment = false
-        }
-        
+
         // old segments do all transition at the same time, so do not have a delay
-        if isNewSegment == false {
+        if isNewSegment(dp) == false {
             return 0
         }
         
-        let startAngle = dp.startAngle + Double.pi/2 // +pi/2 because in iOS top of the circle (0 degrees) is -pi/2 radians
+        let startAngle = dp.startAngle - minimumNewSegmentAngle() + Double.pi/2 // +pi/2 because in iOS top of the circle (0 degrees) is -pi/2 radians
         let percentage = (startAngle * percentPerRadian)/100
         
         let transitionDuration = transitionDuration()
-        return max(transitionDuration + 0.16, (circleAnimationDuration * percentage))
+        var delay = transitionDuration + (circleAnimationDuration * percentage)
+        
+        // If we transition some segments, have some time between transitions and animating in new segments to make
+        // everything look a bit nicer to the user
+        if transitionDuration > 0 {
+            delay += 0.16
+        }
+        
+        return delay
     }
     
     /// Returns the duration required for transitioning existing segments to their new amounts
@@ -139,5 +142,25 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         
         let percentage = (amount * percentPerRadian)/100
         return circleAnimationDuration * percentage
+    }
+    
+    /// Returns the smallest startAngle of all new segments, excluding all transitioning segments
+    private func minimumNewSegmentAngle() -> Double {
+        var minimumAngle = Double(0)
+        for dp in chartData.dataSets.dataPoints {
+            if isNewSegment(dp) {
+                minimumAngle = min(minimumAngle, dp.startAngle)
+            }
+        }
+        
+        return minimumAngle
+    }
+    
+    private func isNewSegment(_ dp: PieChartDataPoint) -> Bool {
+        if lastAmounts.keys.contains(dp.id), let lastAmount = lastAmounts[dp.id], lastAmount.1 > 0 {
+            return false
+        }
+        
+        return true
     }
 }
