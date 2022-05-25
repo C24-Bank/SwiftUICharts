@@ -51,7 +51,10 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
         DispatchQueue.main.async {
             for dp in chartData.dataSets.dataPoints {
                 if lastAmounts.keys.contains(dp.id) {
-                    lastAmounts[dp.id] = (dp.startAngle, dp.amount)
+                    let lastAmount = lastAmounts[dp.id]
+                    if lastAmount?.startAngle != dp.startAngle || lastAmount?.amount != dp.amount {
+                        lastAmounts[dp.id] = (dp.startAngle, dp.amount)
+                    }
                 } else {
                     lastAmounts[dp.id] = (dp.startAngle, 0)
                 }
