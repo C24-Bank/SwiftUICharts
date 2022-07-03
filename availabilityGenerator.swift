@@ -37,6 +37,8 @@ for file in enumerator {
             lineCopy = lineCopy.replacingOccurrences(of: "public", with: "")
             lineCopy = lineCopy.replacingOccurrences(of: "internal", with: "")
             lineCopy = lineCopy.replacingOccurrences(of: "final", with: "")
+            lineCopy = lineCopy.replacingOccurrences(of: "private", with: "")
+            lineCopy = lineCopy.replacingOccurrences(of: "fileprivate", with: "")
             lineCopy = lineCopy.trimmingCharacters(in: .whitespacesAndNewlines)
             if lineCopy.starts(with: "class") || lineCopy.starts(with: "struct") || lineCopy.starts(with: "extension") || lineCopy.starts(with: "enum") || lineCopy.starts(with: "protocol") || lineCopy.starts(with: "typealias") {
                 newContent += getIndentationString(of: line) // add same indentation to annotation as to line it belongs to
