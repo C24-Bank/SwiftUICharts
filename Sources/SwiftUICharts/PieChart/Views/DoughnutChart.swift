@@ -76,7 +76,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
                                  chartData: chartData,
                                  rect: geo.frame(in: .local))
                         .id(chartData.dataSets.dataPoints[data].id)
-                        .animation(chartData.shouldAnimate ? .linear(duration: animationDuration).delay(animationDelay) : nil)
+                        .animation(chartData.shouldAnimate ? .linear(duration: animationDuration).delay(animationDelay) : nil, value: chartData.dataSets.dataPoints[data])
                         .if(chartData.touchPointData == [chartData.dataSets.dataPoints[data]]) {
                             $0
                                 .scaleEffect(1.1)
