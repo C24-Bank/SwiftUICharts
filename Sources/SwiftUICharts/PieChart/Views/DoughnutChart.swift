@@ -76,13 +76,7 @@ public struct DoughnutChart<ChartData>: View where ChartData: DoughnutChartData 
                                  chartData: chartData,
                                  rect: geo.frame(in: .local))
                         .id(chartData.dataSets.dataPoints[data].id)
-                        .animation(chartData.shouldAnimate ? .linear(duration: animationDuration).delay(animationDelay) : nil)
-                        .if(chartData.touchPointData == [chartData.dataSets.dataPoints[data]]) {
-                            $0
-                                .scaleEffect(1.1)
-                                .zIndex(1)
-                                .shadow(color: Color.primary, radius: 10)
-                        }
+                        .animation(chartData.shouldAnimate ? .linear(duration: animationDuration).delay(animationDelay) : nil, value: chartData.dataSets)
                         .accessibilityLabel(chartData.accessibilityTitle)
                         .accessibilityValue(chartData.dataSets.dataPoints[data].getCellAccessibilityValue(specifier: chartData.infoView.touchSpecifier))
                 }
